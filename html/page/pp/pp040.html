@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no, email=no">
+<meta name='viewport' content='width=760'>
+<meta name="description" content="">
+<meta name="keyword" content="">
+<title>플레이어</title>
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="../../css/mainUI.css">
+<script src="../../js/jquery-1.12.1.min.js"></script>
+<script src="../../js/jquery-1.12.1.min.js"></script>
+<script src="../../js/jquery.ba-outside-events.min.js"></script>
+<script src="../../js/jquery.dotdotdot.js"></script>
+<script src="../../js/mainUI.js"></script>
+<script src="../../js/jquery.bxslider.js"></script>
+
+<!--[if lt IE 9]>
+<script src="../../js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<!--[if lte IE 8]>
+<div class="ie8">
+    <span>PLAYER는 인터넷 익스플로러9 버전 이상의 최신 브라우저에 최적화되어있습니다. 익스플로러를 업데이트해주시거나, 다른 브라우저를 사용해주시길 바랍니다.</span>
+    <a href="http://windows.microsoft.com/ko-kr/internet-explorer/download-ie/">인터넷 익스플로러 업데이트</a>
+</div>
+<![endif]-->
+
+<div class="popup_wrap popup_tp01 deli">
+    <div class="popup_tit">
+        <p>배송/구매/교환</p>
+    </div>
+    <div class="popup_cont">
+        <ul class="tab_list narrow type03">
+        <!-- on 클래스 부여, 해당 탭 내용 보임 -->
+            <li><a href="#popup_tab01">배송관련 정보</a></li>
+            <li><a href="#popup_tab02">구매전 확인 사항</a></li>
+            <li><a href="#popup_tab03">교환/환불/반품</a></li>
+        </ul>
+
+        <div class="tab_cont" id="popup_tab01">
+            <em class="hidden">배송관련 정보 내용입니다.</em>
+
+            <p class="tit">배송분류는 어떻게 되나요?</p>
+            <span>구입하신 상품이 마음에 들지 않을 경우 교환/환불 신청을 하실 수 있습니다.</span>
+            <dl>
+                <dt>국내배송</dt>
+                <dd>전국 어느곳에서나 택배를 이용해 결제확인 후 2~4일(일요일/공휴일 제외)이며, 빠르고 안전하게 상품을 받으실 수 있습니다.</dd>
+                <dt>해외배송</dt>
+                <dd>국내에서 구하기 힘들고 해외에서만 판매되고 있는 상품들을 엄선해 비싼 항공운송료와 세관통관비를 없애 고객님의 부담을 줄인 무료배송으로 판매되는 파격적인 서비스입니다. 배송기간은 결제확인 후 약 7일~15일 소요됩니다.</dd>
+                <dt>주문제작</dt>
+                <dd>배송주문후 상품이 제작되어 발송되므로 배송기간이 상품에 따라 다르게 소요됩니다.</dd>
+            </dl>
+
+            <p class="tit">배송기간은 얼마나 걸리나요?</p>
+            <span>구입하신 상품이 마음에 들지 않을 경우 교환/환불 신청을 하실 수 있습니다.</span>
+            <dl>
+                <dt>국내배송</dt>
+                <dd>결제확인 후 2~4일 (주말/공휴일 제외)의 기간이 소요됩니다. 단, 제주도와 산간 도서지역은 1~2일이 추가 소요될 수 있습니다. 배송물량이 증가하는 시기(설,추석 등)나 택배업체의 사정에 의해 최장 7일까지 소요 될 수 있습니다.</dd>
+                <dt>해외배송</dt>
+                <dd>항공운송기간과 세관통관 기간이 포함되어 약 7일~15일의 배송시간이 소요됩니다.</dd>
+                <dt>주문제작 및 특수 상품의 경우 </dt>
+                <dd>배송기간이 상품마다 다르게 적용될 수 있습니다.</dd>
+            </dl>
+
+            <p class="tit">배송비는 얼마인가요?</p>
+            <span>배송비는 판매업체별 편도 2500원 입니다. 단, 도서산간 지역은 2000원의 추가요금이 발생되며, 주문서 작성 시 <br />추가배송비 2,000원이 포함됩니다.</span>
+            <dl>
+                <dt>당일배송</dt>
+                <dd>영업일 오후 4시 30분 이전 결제완료 주문건에 대해 당일발송</dd>
+                <dt>업체배송</dt>
+                <dd>각 협력사를 통해 개별 발송 (택배사 다름)</dd>
+                <dt>평균 발송일</dt>
+                <dd>판매업체 별 결제가 완료되는 시점으로부터 상품이 해당 택배사로 전달되는 시점까지의 평균 소요시간</dd>
+            </dl>
+        </div>
+
+        <div class="tab_cont" id="popup_tab02">
+            <em class="hidden">구매전 확인 사항 내용입니다.</em>
+            <strong>구매전에 꼭 확인하세요!</strong>
+            <p class="sub">상품구매시 주의사항</p>
+            <span>상품 촬영 당시 스튜디오의 빛의 세기 및 카메라 플래쉬, 모니터색상 설정 등으로 인해, 실제 상품은 화면에 보여지는 이미지와 다소 차이가 있을 수 있습니다.<br />상품의 실측 사이즈는 측정하는 사람, 측정위치 등에 따라 서로 차이가 발생할 수 있으며, 동일 브랜드의 같은 사이즈 상품이라고 하더라도 여러 단계의 생산공정을 거치면서 상품마다 사이즈 오차가 발생하기 때문에 안내된 실측사이즈와 수령하신 상품의 사이즈 오차는 자연스러운 현상으로 상품이상이 아닙니다.</span>
+
+            <p class="sub">A/S 안내</p>
+            <span>플레이어에서 판매되는 상품 중 해외 구매대행 상품 및 직수입 상품은 제조사 및 판매처와 사후 서비스에 관한 연계가 되어 있지 않아 A/S 처리가 불가능 합니다.</span>
+        </div>
+
+        <div class="tab_cont" id="popup_tab03">
+            <em class="hidden">교환, 환불, 반품 관련 내용입니다.</em>
+            <p class="tit">이런경우 교환/환불이 <span class="blue">가능</span>해요!</p>
+            <span>구입하신 상품이 마음에 들지 않을 경우 교환/환불 신청을 하실 수 있습니다.</span>
+            <ul>
+                <li>교환이나 환불을 원하실 경우, 상품을 수령하신 날로부터 7일 이내에 교환/환불 신청을 하셔야 합니다.<br />(단, 상품에 제조상의 하자가 있는 경우에는 30일 이내에 반품 신청을 하실 수 있습니다.)</li>
+                <li>고객의 취향이나, 주관적인 불만사항(디자인, 색상차이, 사이즈, 실측정보, 소재, 마감처리 등)으로 교환 및 환불을 원하실 경우 왕복 택배비는 소비자 부담입니다.</li>
+                <li>교환/환불 신청 후 14일 이내 상품이 반송지로 도착하지 않을 경우 접수는 임의적으로 취소됩니다.<br />(단, 회수 반품 배송지연의 경우는 제외)</li>
+            </ul>
+
+            <p class="tit">이런경우 교환/환불이 <span class="red">불가능</span>해요!</p>
+            <span>아래와 같은 경우에는 교환/환불이 불가합니다.</span>
+            <ul>
+                <li>상품을 수령하신 후 7일을 초과한 경우</li>
+                <li>한번이라도 상품을 사용하신 경우</li>
+                <li>상품에 부착된 택을 훼손/분실 하거나 브랜드 박스에 낙서나 테이핑, 운송장을 부착한 경우</li>
+                <li>세탁, 수선 등의 처리가 진행된 경우</li>
+                <li>상품과 함께 제공된 사은품이나 그 외 서비스 등을 사용하셨거나 훼손 (파손, 분실, 반품 누락 등)하신 경우<br />(단, 일부 사은품의 경우 해당 사은품 비용  부담 후 반품처리 가능)</li>
+                <li>주문제작, 속옷 등과 같이 재화의 특성상 교환/환불이 불가능한 경우</li>
+            </ul>
+            <span>임의대로 반품을 하셔서 상품에 훼손이 있는 경우나 상품이 배송중 분실된 경우에는 플레이어에서 배상책임을 지지 않습니다.<br />그러므로 반품을 원하실 경우에는 반드시 1:1친절상담 또는 고객센터(1566-1677)로 반품신청을 해주시기 바랍니다.</span>
+
+            <p class="tit">반품시 포장법에 대해 알려주세요!</p>
+            <span>반품(교환/환불)시 브랜드박스 포장의 예시</span>
+            <ul>
+                <li>정품 브랜드 박스는 상품의 일부분이며 대체가 불가능합니다.</li>
+                <li>정품 브랜드 박스가 없거나, 훼손이 된 경우에는 반품(교환/환불)이 불가합니다.</li>
+            </ul>
+
+            <ul class="return_ex">
+                <li>
+                    <p><span class="blue">올바른</span> 반품 포장의 예</p>
+                    <div class="right">
+                        <span>정품 브랜드 박스의 훼손이 없도록 <br />택배 박스 및 타박스로 반드시 <br />이중포장 합니다.</span>
+                    </div>
+                </li>
+                <li>
+                    <p><span class="red">잘못된</span> 반품 포장의 예</p>
+                    <div class="wrong">
+                        <span>정품 브랜드 박스에 직접적인 송장부착, <br />낙서를 한 경우나 테이핑을 할 경우에는 <br />반품(교환/환불)이 불가합니다.</span>
+                        <span>정품 브랜드 박스 훼손 및 분실 후 <br />상품만 반송 되어진 경우에는 <br />반품(교환/환불)이 불가합니다.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div> <!-- // popup_cont -->
+
+    <div class="popup_close">
+        <a href="#none" class="btn_close">팝업창 닫기</a>
+    </div>
+</div> <!-- // popup -->
+</body>
+</html>

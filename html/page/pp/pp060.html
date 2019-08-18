@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no, email=no">
+<meta name='viewport' content='width=760'>
+<meta name="description" content="">
+<meta name="keyword" content="">
+<title>플레이어</title>
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="../../css/mainUI.css">
+<script src="../../js/jquery-1.12.1.min.js"></script>
+<script src="../../js/jquery-1.12.1.min.js"></script>
+<script src="../../js/jquery.ba-outside-events.min.js"></script>
+<script src="../../js/jquery.dotdotdot.js"></script>
+<script src="../../js/mainUI.js"></script>
+<script src="../../js/jquery.bxslider.js"></script>
+
+<!--[if lt IE 9]>
+<script src="../../js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<!--[if lte IE 8]>
+<div class="ie8">
+    <span>PLAYER는 인터넷 익스플로러9 버전 이상의 최신 브라우저에 최적화되어있습니다. 익스플로러를 업데이트해주시거나, 다른 브라우저를 사용해주시길 바랍니다.</span>
+    <a href="http://windows.microsoft.com/ko-kr/internet-explorer/download-ie/">인터넷 익스플로러 업데이트</a>
+</div>
+<![endif]-->
+
+<div class="popup_wrap popup_tp01 inquiry">
+    <div class="popup_tit">
+        <p>상품 문의하기</p>
+    </div>
+
+    <div class="popup_cont">
+        <div class="tb_popup02">
+            <table>
+                <caption>상품 문의하기</caption>
+                <colgroup>
+                    <col style="width:150px" />
+                    <col style="" />
+                </colgroup>
+
+                <tbody>
+                    <tr>
+                        <th scope="col"><label for="inq_tit">제목</label></th>
+                        <td><input type="text" id="inq_tit" placeholder="제목을 입력해주세요." /></td>
+                    </tr>
+                    <tr>
+                        <th scope="col"><label for="inq_type01">문의 유형</label></th>
+                        <td>
+                            <div class="radio">
+                                <ul>
+                                    <li>
+                                        <input type="radio" id="inq_type01" name="inquiry_tp"/>
+                                        <label for="inq_type01">사이즈</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="inq_type02" name="inquiry_tp"/>
+                                        <label for="inq_type02">재입고</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="inq_type03" name="inquiry_tp"/>
+                                        <label for="inq_type03">배송</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="inq_type04" name="inquiry_tp"/>
+                                        <label for="inq_type04">기타문의</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col"><label for="inq_txt">내용</label></th>
+                        <td><textarea name="input_area" id="inq_txt" cols="1" rows="1"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> <!-- // inquiry -->
+
+        <div class="btn_popup">
+            <button type="submit" class="btn_rd">등록하기</button>
+            <button type="reset" class="btn_gy">다시쓰기</button>
+        </div>
+
+        <div class="tb_popup02 no_th">
+            <table>
+                <caption>주문번호 조회</caption>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p>사이즈 관련 문의시</p>
+                            <ul>
+                                <li>평소 신는 운동화 사이즈 또는 플레이어에서 구입한 상품의 사이즈를 알려주시면 보다 정확한 답변이 가능합니다.<br />(단, 사이즈 교환 시 배송료는 고객 부담이므로 주문 시 참고하시기 바랍니다.)</li>
+                                <li>주문하신 상품에 대한 문의 및 확인은 1:1 친절상담 게시판을 이용해 주시기 바랍니다.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <a href="#none" class="tb_btn white">1:1 친절상담 가기</a>
+            </div>
+        </div>
+    </div> <!-- // popup_cont -->
+
+    <div class="popup_close">
+        <a href="#none" class="btn_close">팝업창 닫기</a>
+    </div>
+</div> <!-- // popup -->
+</body>
+</html>

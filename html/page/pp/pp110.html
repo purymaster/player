@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no, email=no">
+<meta name='viewport' content='width=760'>
+<meta name="description" content="">
+<meta name="keyword" content="">
+<title>플레이어</title>
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="../../css/mainUI.css">
+<script src="../../js/jquery-1.12.1.min.js"></script>
+<script src="../../js/jquery-1.12.1.min.js"></script>
+<script src="../../js/jquery.ba-outside-events.min.js"></script>
+<script src="../../js/jquery.dotdotdot.js"></script>
+<script src="../../js/mainUI.js"></script>
+<script src="../../js/jquery.bxslider.js"></script>
+
+<!--[if lt IE 9]>
+<script src="../../js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<!--[if lte IE 8]>
+<div class="ie8">
+    <span>PLAYER는 인터넷 익스플로러9 버전 이상의 최신 브라우저에 최적화되어있습니다. 익스플로러를 업데이트해주시거나, 다른 브라우저를 사용해주시길 바랍니다.</span>
+    <a href="http://windows.microsoft.com/ko-kr/internet-explorer/download-ie/">인터넷 익스플로러 업데이트</a>
+</div>
+<![endif]-->
+
+<div class="popup_wrap popup_tp01 coupon">
+    <div class="popup_tit">
+        <p>쿠폰조회 및 적용</p>
+    </div>
+    <div class="popup_cont">
+        <p class="top_tit">상품에 적용하실 쿠폰을 선택해주세요.</p>
+
+        <div class="tb_popup01 tf">
+            <div>
+                <table>
+                    <caption>주문번호 조회</caption>
+                    <colgroup>
+                        <col style="width:324px" />
+                        <col style="width:119px" />
+                        <col style="width:119px" />
+                        <col style="width:138px" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">상품명</th>
+                            <th scope="col">판매가격</th>
+                            <th scope="col">할인가격</th>
+                            <th scope="col">쿠폰선택</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">쿠폰할인 합계</td>
+                            <td class="price"><span>6,000</span>원</td>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                        <!-- 개발작업시, id와 label 일치 요망 -->
+                            <td class="name">
+                                <div class="goods">
+                                    <img src="http://placehold.it/98x98/ffffff?text=IMG" alt="주문상품사진">
+                                    <strong class="name">[나이키/조던] 닥터마틴 8홀 워커</strong>
+                                    <strong class="goods_info">옵션
+                                        <span>250</span>
+                                    </strong>
+                                </div>
+                            </td>
+                            <td class="price">9,999,999 원</td>
+                            <td class="txt_red">2,000 원</td>
+                            <td class="select_cp">
+                                <button class="cp_select">쿠폰선택</button>
+                                <div class="cp_list">
+                                    <p>적용 가능한 쿠폰 선택</p>
+
+                                    <div class="tb_popup01 cp_layer">
+                                        <div>
+                                            <table>
+                                                <caption>주문번호 조회</caption>
+                                                <colgroup>
+                                                    <col style="width:60px" />
+                                                    <col style="width:255px" />
+                                                    <col style="width:100px" />
+                                                    <col style="width:120px" />
+                                                </colgroup>
+
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">선택</th>
+                                                        <th scope="col">쿠폰명</th>
+                                                        <th scope="col">할인금액(율)</th>
+                                                        <th scope="col">할인가격</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="radio_single">
+                                                                <input type="radio" id="cp0001" name="cp_box"/>
+                                                                <label for="cp0001"><span class="hidden">쿠폰선택</span></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>회원가입 10,000원 쿠폰</td>
+                                                        <td>999,999 원</td>
+                                                        <td class="txt_red">999,999 원</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="radio_single">
+                                                                <input type="radio" id="cp0002" name="cp_box"/>
+                                                                <label for="cp0002"><span class="hidden">쿠폰선택</span></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>10,000원10,000원10,000원10,000원</td>
+                                                        <td>999,999 원</td>
+                                                        <td class="txt_red">999,999 원</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="radio_single">
+                                                                <input type="radio" id="cp0003" name="cp_box"/>
+                                                                <label for="cp0003"><span class="hidden">쿠폰선택</span></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>회원가입회원가입회원가입회원가입회원가입회원가입회원가입회원가입회원가입회원가입</td>
+                                                        <td>999,999 원</td>
+                                                        <td class="txt_red">999,999 원</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="radio_single">
+                                                                <input type="radio" id="cp0004" name="cp_box"/>
+                                                                <label for="cp0004"><span class="hidden">쿠폰선택</span></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰</td>
+                                                        <td>999,999 원</td>
+                                                        <td class="txt_red">999,999 원</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="radio_single">
+                                                                <input type="radio" id="cp0005" name="cp_box"/>
+                                                                <label for="cp0005"><span class="hidden">쿠폰선택</span></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>회원가입 10,000원 쿠폰</td>
+                                                        <td>999,999 원</td>
+                                                        <td class="txt_red">999,999 원</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div><!-- // tb_popup01 -->
+                                    <div class="btn_cp">
+                                        <button class="tb_btn">쿠폰적용</button>
+                                        <a href="#none" class="tb_btn white cancel">취소</a>
+                                    </div>
+                                </div><!-- // cp_list -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="name">
+                                <div class="goods">
+                                    <img src="http://placehold.it/98x98/ffffff?text=IMG" alt="주문상품사진">
+                                    <strong class="name">뉴발란스 M990LG3 그레이뉴발란스 M990LG3 그레이</strong>
+                                    <strong class="goods_info">옵션
+                                        <span>250250250250250250250250250</span>
+                                    </strong>
+                                </div>
+                            </td>
+                            <td class="price">9,999,999 원</td>
+                            <td class="txt_red">2,000 원</td>
+                            
+                            <td class="select_cp">
+                                <button class="cp_select">쿠폰선택</button>
+                                <div class="cp_list">
+                                    <p>적용 가능한 쿠폰 선택</p>
+
+                                    <div class="tb_popup01 cp_layer">
+                                        <div>
+                                            <table>
+                                                <caption>주문번호 조회</caption>
+                                                <colgroup>
+                                                    <col style="width:60px" />
+                                                    <col style="width:255px" />
+                                                    <col style="width:100px" />
+                                                    <col style="width:120px" />
+                                                </colgroup>
+
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">선택</th>
+                                                        <th scope="col">쿠폰명</th>
+                                                        <th scope="col">할인금액(율)</th>
+                                                        <th scope="col">할인가격</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="radio_single">
+                                                                <input type="radio" id="cp0006" name="cp_box"/>
+                                                                <label for="cp0006"><span class="hidden">쿠폰선택</span></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>회원가입 10,000원 쿠폰 회원가입 10,000원 쿠폰 회원가입 10,000원 쿠폰</td>
+                                                        <td>992,000 원</td>
+                                                        <td class="txt_red">999,000 원</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="radio_single">
+                                                                <input type="radio" id="cp0007" name="cp_box"/>
+                                                                <label for="cp0007"><span class="hidden">쿠폰선택</span></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>회원가입 쿠폰회원가입 쿠폰회원가입 쿠폰회원가입 쿠폰회원가입 쿠폰회원가입 쿠폰회원가입 쿠폰</td>
+                                                        <td>992,000 원</td>
+                                                        <td class="txt_red">999,000 원</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="radio_single">
+                                                                <input type="radio" id="cp0008" name="cp_box"/>
+                                                                <label for="cp0008"><span class="hidden">쿠폰선택</span></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>회원가입 10,000원 쿠폰</td>
+                                                        <td>992,000 원</td>
+                                                        <td class="txt_red">999,000 원</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div><!-- // tb_popup01 -->
+                                    <div class="btn_cp">
+                                        <button class="tb_btn">쿠폰적용</button>
+                                        <a href="#none" class="tb_btn white cancel">취소</a>
+                                    </div>
+                                </div><!-- // cp_list -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="name">
+                                <div class="goods">
+                                    <img src="http://placehold.it/98x98/ffffff?text=IMG" alt="주문상품사진">
+                                    <strong class="name">뉴발란스 M990LG3 그레이</strong>
+                                    <strong class="goods_info">옵션
+                                        <span>250</span>
+                                    </strong>
+                                </div>
+                            </td>
+                            <td class="price">9,999,999 원</td>
+                            <td class="txt_red">0 원</td>
+                            <td class="select_cp"><button class="cp_cancel">적용취소</button></td>
+                        </tr>
+                        <tr>
+                            <td class="name">
+                                <div class="goods">
+                                    <img src="http://placehold.it/98x98/ffffff?text=IMG" alt="주문상품사진">
+                                    <strong class="name">뉴발란스 M990LG3 그레이</strong>
+                                    <strong class="goods_info">옵션
+                                        <span>250</span>
+                                    </strong>
+                                </div>
+                            </td>
+                            <td class="price">9,999,999 원</td>
+                            <td class="txt_red">0 원</td>
+                            <td class="select_cp"><span class="unable">쿠폰 적용 불가</span></td>
+                        </tr>
+                        <tr>
+                            <td class="name">
+                                <div class="goods">
+                                    <img src="http://placehold.it/98x98/ffffff?text=IMG" alt="주문상품사진">
+                                    <strong class="name">뉴발란스 M990LG3 그레이</strong>
+                                    <strong class="goods_info">옵션
+                                        <span>250</span>
+                                    </strong>
+                                </div>
+                            </td>
+                            <td class="price">9,999,999 원</td>
+                            <td class="txt_red">0 원</td>
+                            <td class="select_cp"><span class="unable">쿠폰 적용 불가</span></td>
+                        </tr>
+                        <tr>
+                            <td class="name">
+                                <div class="goods">
+                                    <img src="http://placehold.it/98x98/ffffff?text=IMG" alt="주문상품사진">
+                                    <strong class="name">뉴발란스 M990LG3 그레이뉴발란스 M990LG3 그레이</strong>
+                                    <strong class="goods_info">옵션
+                                        <span>250</span>
+                                    </strong>
+                                </div>
+                            </td>
+                            <td class="price">9,999,999 원</td>
+                            <td class="txt_red">2,000 원</td>
+                            
+                            <td class="select_cp">
+                                <button class="cp_select">쿠폰선택</button>
+                                <div class="cp_list">
+                                    <p>적용 가능한 쿠폰 선택</p>
+
+                                    <div class="tb_popup01 cp_layer">
+                                        <div>
+                                            <table>
+                                                <caption>주문번호 조회</caption>
+                                                <colgroup>
+                                                    <col style="width:60px" />
+                                                    <col style="width:255px" />
+                                                    <col style="width:100px" />
+                                                    <col style="width:120px" />
+                                                </colgroup>
+
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">선택</th>
+                                                        <th scope="col">쿠폰명</th>
+                                                        <th scope="col">할인금액(율)</th>
+                                                        <th scope="col">할인가격</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="radio_single">
+                                                                <input type="radio" id="cp0009" name="cp_box"/>
+                                                                <label for="cp0009"><span class="hidden">쿠폰선택</span></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>10,000원 쿠폰</td>
+                                                        <td>992,000 원</td>
+                                                        <td class="txt_red">999,000 원</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div><!-- // tb_popup01 -->
+                                    <div class="btn_cp">
+                                        <button class="tb_btn">쿠폰적용</button>
+                                        <a href="#none" class="tb_btn white cancel">취소</a>
+                                    </div>
+                                </div><!-- // cp_list -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="name">
+                                <div class="goods">
+                                    <img src="http://placehold.it/98x98/ffffff?text=IMG" alt="주문상품사진">
+                                    <strong class="name">뉴발란스 M990LG3 그레이뉴발란스 M990LG3 그레이</strong>
+                                    <strong class="goods_info">옵션
+                                        <span>250</span>
+                                    </strong>
+                                </div>
+                            </td>
+                            <td class="price">9,999,999 원</td>
+                            <td class="txt_red">2,000 원</td>
+                            
+                            <td class="select_cp">
+                                <button class="cp_select">쿠폰선택</button>
+                                <div class="cp_list">
+                                    <p>적용 가능한 쿠폰 선택</p>
+
+                                    <div class="tb_popup01 cp_layer">
+                                        <div>
+                                            <table>
+                                                <caption>주문번호 조회</caption>
+                                                <colgroup>
+                                                    <col style="width:60px" />
+                                                    <col style="width:255px" />
+                                                    <col style="width:100px" />
+                                                    <col style="width:120px" />
+                                                </colgroup>
+
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">선택</th>
+                                                        <th scope="col">쿠폰명</th>
+                                                        <th scope="col">할인금액(율)</th>
+                                                        <th scope="col">할인가격</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="radio_single">
+                                                                <input type="radio" id="cp0010" name="cp_box"/>
+                                                                <label for="cp0010"><span class="hidden">쿠폰선택</span></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠폰쿠쿠폰</td>
+                                                        <td>992,000 원</td>
+                                                        <td class="txt_red">999,000 원</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="radio_single">
+                                                                <input type="radio" id="cp0011" name="cp_box"/>
+                                                                <label for="cp0011"><span class="hidden">쿠폰선택</span></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>회원가입 10,000원 쿠폰</td>
+                                                        <td>999,999 원</td>
+                                                        <td class="txt_red">999,000 원</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div><!-- // tb_popup01 -->
+                                    <div class="btn_cp">
+                                        <button class="tb_btn">쿠폰적용</button>
+                                        <a href="#none" class="tb_btn white">취소</a>
+                                    </div>
+                                </div><!-- // cp_list -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div> <!-- // coupon -->
+        <div class="coupon_info">
+            <ul>
+                <li>쿠폰은 쿠폰당 한 주문, 한 상품에 한해서만 적용하실 수 있습니다. (복수발급 쿠폰 제외)</li>
+                <li>주문을 취소하거나 반품하실 경우에는 쿠폰은 자동소멸 됩니다.</li>
+            </ul>
+            <a href="#none" class="tb_btn">보유 쿠폰 내역보기</a>
+
+            <div class="my_coupon">
+                <p><strong class="txt_red">플레이어</strong>님께서 보유하고 계신 쿠폰 상세 내역입니다.</p>
+
+                <div class="tb_popup01 all_cp_layer">
+                    <div>
+                        <table>
+                            <caption>주문번호 조회</caption>
+                            <colgroup>
+                                <col style="width:90px" />
+                                <col style="width:163px" />
+                                <col style="width:115px" />
+                                <col style="width:140px" />
+                                <col style="width:130px" />
+                            </colgroup>
+
+                            <thead>
+                                <tr>
+                                    <th scope="col">쿠폰번호</th>
+                                    <th scope="col">쿠폰명</th>
+                                    <th scope="col">할인금액(율)</th>
+                                    <th scope="col">사용가능대상</th>
+                                    <th scope="col">사용기한</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>회원가입 10,000원 쿠폰회원가입 10,000원 쿠폰</td>
+                                    <td>992,000 원</td>
+                                    <td><strong>모든 상품</strong></td>
+                                    <td class="date">2016-12-20<br />~2017-12-20</td>
+                                </tr>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>회원가입 10,000원 쿠폰회원가입 10,000원 쿠폰 쿠폰회원가입 10,000원 쿠폰</td>
+                                    <td>992,000 원</td>
+                                    <td><strong>아디다스아디다스아디다스</strong></td>
+                                    <td class="date">2016-12-20<br />~2017-12-20</td>
+                                </tr>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>할인</td>
+                                    <td>50%</td>
+                                    <td><strong>아디다스</strong></td>
+                                    <td class="date">2016-12-20<br />~2017-12-20</td>
+                                </tr>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>회원가입 10,000원 쿠폰회원가입 10,000원 쿠폰</td>
+                                    <td>992,000 원</td>
+                                    <td><strong>모든 상품</strong></td>
+                                    <td class="date">2016-12-20<br />~2017-12-20</td>
+                                </tr>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>회원가입 10,000원 쿠폰회원가입 10,000원 쿠폰 쿠폰회원가입 10,000원 쿠폰</td>
+                                    <td>992,000 원</td>
+                                    <td><strong>아디다스아디다스아디다스</strong></td>
+                                    <td class="date">2016-12-20<br />~2017-12-20</td>
+                                </tr>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>할인</td>
+                                    <td>50%</td>
+                                    <td><strong>아디다스</strong></td>
+                                    <td class="date">2016-12-20<br />~2017-12-20</td>
+                                </tr>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>회원가입 10,000원 쿠폰회원가입 10,000원 쿠폰</td>
+                                    <td>992,000 원</td>
+                                    <td><strong>모든 상품</strong></td>
+                                    <td class="date">2016-12-20<br />~2017-12-20</td>
+                                </tr>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>회원가입 10,000원 쿠폰회원가입 10,000원 쿠폰 쿠폰회원가입 10,000원 쿠폰</td>
+                                    <td>992,000 원</td>
+                                    <td><strong>아디다스아디다스아디다스</strong></td>
+                                    <td class="date">2016-12-20<br />~2017-12-20</td>
+                                </tr>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>할인</td>
+                                    <td>50%</td>
+                                    <td><strong>아디다스</strong></td>
+                                    <td class="date">2016-12-20<br />~2017-12-20</td>
+                                </tr>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>회원가입 10,000원 쿠폰회원가입 10,000원 쿠폰</td>
+                                    <td>992,000 원</td>
+                                    <td><strong>모든 상품</strong></td>
+                                    <td class="date">2016-12-20<br />~2017-12-20</td>
+                                </tr>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>회원가입 10,000원 쿠폰회원가입 10,000원 쿠폰 쿠폰회원가입 10,000원 쿠폰</td>
+                                    <td>992,000 원</td>
+                                    <td><strong>아디다스아디다스아디다스</strong></td>
+                                    <td class="date">2016-12-20<br />~2017-12-20</td>
+                                </tr>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>할인</td>
+                                    <td>50%</td>
+                                    <td><strong>아디다스</strong></td>
+                                    <td class="date">2016-12-20<br />~2017-12-20</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="cp_layer_close">
+                    <a href="#none" class="btn_close">팝업창 닫기</a>
+                </div>
+            </div><!-- // my_coupon -->
+
+        </div><!-- // coupon_info -->
+
+        <div class="btn_popup">
+            <a href="#none" class="btn_rd">확인</a>
+            <a href="#none" class="btn_gy">취소</a>
+        </div>
+
+    </div> <!-- // popup_cont -->
+    
+    <div class="popup_close">
+        <a href="#none" class="btn_close">팝업창 닫기</a>
+    </div>
+</div> <!-- // popup -->
+</body>
+</html>

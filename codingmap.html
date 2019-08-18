@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>플레이어</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width">
+<link href="http://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+<link rel="stylesheet" href="misc/coding.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="misc/map.js"></script>
+</head>
+<body>
+<p class="warning">현재 사용중인 디바이스는 페이지맵을 열람하기엔 너무 작습니다. 태블릿 이상의 디바이스를 권장합니다.</p>
+<div class="map_wrap">
+	<p class="tit">플레이어 페이지 목록</p>
+	<div class="info">
+		<dl class="process">
+			<dt>작업공정률</dt>
+			<dd></dd>
+		</dl>
+		<ul class="status">
+			<li><em class="ico standby">s</em>대기</li>
+			<li><em class="ico work">w</em>착수</li>
+			<li><em class="ico modify">m</em>수정</li>
+			<li><em class="ico end">e</em>완료</li>
+		</ul>
+	</div>
+	<table class="list d3">
+		<caption>코딩 리스트</caption>
+		<thead>
+			<tr>
+				<th class="num">No</th>
+				<th class="depth">1depth</th>
+				<th class="depth">2depth</th>
+				<th class="depth">3depth</th>
+				<th class="id">ID</th>
+				<th class="dev">Dev</th>
+				<th class="stat">Status</th>
+				<th class="date">Date</th>
+				<th class="memo">Memo</th>
+				<th class="link">Link</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="center"></td>
+				<td>메인페이지</td>
+				<td></td>
+				<td></td>
+				<td class="center">01010</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/14</td>
+				<td></td>
+				<td class="center"><a href="html/page/01/01010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>상품상세</td>
+				<td></td>
+				<td></td>
+				<td class="center">02010</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/16</td>
+				<td></td>
+				<td class="center"><a href="html/page/02/02010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>고객센터</td>
+				<td>고객센터 메인</td>
+				<td></td>
+				<td class="center">03010</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/14</td>
+				<td></td>
+				<td class="center"><a href="html/page/03/03010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>1:1 친절상담</td>
+				<td></td>
+				<td class="center">03020</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/14</td>
+				<td></td>
+				<td class="center"><a href="html/page/03/03020.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>비회원 주문조회</td>
+				<td></td>
+				<td class="center">03030</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/17</td>
+				<td></td>
+				<td class="center"><a href="html/page/03/03030.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>공지사항</td>
+				<td>List</td>
+				<td class="center">03041</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/18</td>
+				<td></td>
+				<td class="center"><a href="html/page/03/03041.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td></td>
+				<td>View</td>
+				<td class="center">03042</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/21</td>
+				<td></td>
+				<td class="center"><a href="html/page/03/03042.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>입금자 확인</td>
+				<td></td>
+				<td class="center">03050</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/14</td>
+				<td></td>
+				<td class="center"><a href="html/page/03/03050.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>자주하는 질문</td>
+				<td></td>
+				<td class="center">03060</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/22</td>
+				<td></td>
+				<td class="center"><a href="html/page/03/03060.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>마이페이지</td>
+				<td>마이페이지 메인</td>
+				<td></td>
+				<td class="center">04010</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/17</td>
+				<td></td>
+				<td class="center"><a href="html/page/04/04010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>나의쿠폰내역</td>
+				<td></td>
+				<td class="center">04020</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/18</td>
+				<td></td>
+				<td class="center"><a href="html/page/04/04020.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>주문내역배송조회</td>
+				<td>List</td>
+				<td class="center">04031</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/18</td>
+				<td></td>
+				<td class="center"><a href="html/page/04/04031.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td></td>
+				<td>View</td>
+				<td class="center">04032</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/23</td>
+				<td></td>
+				<td class="center"><a href="html/page/04/04032.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>영수증발급조회</td>
+				<td></td>
+				<td class="center">04040</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/22</td>
+				<td></td>
+				<td class="center"><a href="html/page/04/04040.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>취소반품내역</td>
+				<td></td>
+				<td class="center">04050</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/22</td>
+				<td></td>
+				<td class="center"><a href="html/page/04/04050.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>나의위시리스트</td>
+				<td></td>
+				<td class="center">04060</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/23</td>
+				<td></td>
+				<td class="center"><a href="html/page/04/04060.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>나의적립금내역</td>
+				<td></td>
+				<td class="center">04070</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/23</td>
+				<td></td>
+				<td class="center"><a href="html/page/04/04070.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>나의상품평</td>
+				<td></td>
+				<td class="center">04080</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/23</td>
+				<td></td>
+				<td class="center"><a href="html/page/04/04080.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>나의문의내역</td>
+				<td>List</td>
+				<td class="center">04091</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/24</td>
+				<td></td>
+				<td class="center"><a href="html/page/04/04091.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td></td>
+				<td>View</td>
+				<td class="center">04092</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/24</td>
+				<td></td>
+				<td class="center"><a href="html/page/04/04092.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>개인정보수정</td>
+				<td></td>
+				<td class="center">04100</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/25</td>
+				<td></td>
+				<td class="center"><a href="html/page/04/04100.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>주문</td>
+				<td>장바구니</td>
+				<td></td>
+				<td class="center">05010</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/29</td>
+				<td></td>
+				<td class="center"><a href="html/page/05/05010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>주문결제</td>
+				<td></td>
+				<td class="center">05020</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/29</td>
+				<td></td>
+				<td class="center"><a href="html/page/05/05020.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>주문완료</td>
+				<td></td>
+				<td class="center">05030</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/29</td>
+				<td></td>
+				<td class="center"><a href="html/page/05/05030.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>카테고리</td>
+				<td>전시</td>
+				<td></td>
+				<td class="center">06010</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/30</td>
+				<td></td>
+				<td class="center"><a href="html/page/06/06010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>용도</td>
+				<td></td>
+				<td class="center">06020</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/30</td>
+				<td></td>
+				<td class="center"><a href="html/page/06/06020.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>회원가입</td>
+				<td>정보입력</td>
+				<td></td>
+				<td class="center">07010</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/2</td>
+				<td></td>
+				<td class="center"><a href="html/page/07/07010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>가입완료</td>
+				<td></td>
+				<td class="center">07020</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/2</td>
+				<td></td>
+				<td class="center"><a href="html/page/07/07020.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>로그인</td>
+				<td></td>
+				<td class="center">07030</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/2</td>
+				<td></td>
+				<td class="center"><a href="html/page/07/07030.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>회원정보찾기</td>
+				<td></td>
+				<td class="center">07040</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/2</td>
+				<td></td>
+				<td class="center"><a href="html/page/07/07040.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>검색</td>
+				<td></td>
+				<td></td>
+				<td class="center">08010</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/5</td>
+				<td></td>
+				<td class="center"><a href="html/page/08/08010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>브랜드</td>
+				<td>List</td>
+				<td></td>
+				<td class="center">09011</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/5</td>
+				<td></td>
+				<td class="center"><a href="html/page/09/09011.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>View</td>
+				<td></td>
+				<td class="center">09012</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/5</td>
+				<td></td>
+				<td class="center"><a href="html/page/09/09011.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>기획전</td>
+				<td>List</td>
+				<td></td>
+				<td class="center">10011</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/5</td>
+				<td></td>
+				<td class="center"><a href="html/page/10/10011.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>View</td>
+				<td></td>
+				<td class="center">10012</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/5</td>
+				<td></td>
+				<td class="center"><a href="html/page/10/10012.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>신상품</td>
+				<td></td>
+				<td></td>
+				<td class="center">11010</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/7</td>
+				<td></td>
+				<td class="center"><a href="html/page/11/11010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>쿠폰</td>
+				<td>온라인</td>
+				<td></td>
+				<td class="center">12010</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/7</td>
+				<td></td>
+				<td class="center"><a href="html/page/12/12010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>오프라인</td>
+				<td></td>
+				<td class="center">12020</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/7</td>
+				<td></td>
+				<td class="center"><a href="html/page/12/12020.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>적용가능 상품목록</td>
+				<td></td>
+				<td class="center">12030</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/7</td>
+				<td></td>
+				<td class="center"><a href="html/page/12/12030.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>랭킹</td>
+				<td>상품</td>
+				<td></td>
+				<td class="center">13010</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/6</td>
+				<td></td>
+				<td class="center"><a href="html/page/13/13010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>키워드</td>
+				<td></td>
+				<td class="center">13020</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/6</td>
+				<td></td>
+				<td class="center"><a href="html/page/13/13020.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>LOOKBOOK</td>
+				<td>List</td>
+				<td></td>
+				<td class="center">14011</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/6</td>
+				<td></td>
+				<td class="center"><a href="html/page/14/14011.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>View</td>
+				<td></td>
+				<td class="center">14012</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/6</td>
+				<td></td>
+				<td class="center"><a href="html/page/14/14012.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>커뮤니티</td>
+				<td>List</td>
+				<td></td>
+				<td class="center">15011</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/27</td>
+				<td></td>
+				<td class="center"><a href="html/page/15/15011.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>View</td>
+				<td></td>
+				<td class="center">15012</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/27</td>
+				<td></td>
+				<td class="center"><a href="html/page/15/15012.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>Modify</td>
+				<td></td>
+				<td class="center">15013</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/27</td>
+				<td></td>
+				<td class="center"><a href="html/page/15/15013.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>SALE</td>
+				<td></td>
+				<td></td>
+				<td class="center">16010</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/7</td>
+				<td></td>
+				<td class="center"><a href="html/page/16/16010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>약관</td>
+				<td>이용약관</td>
+				<td></td>
+				<td class="center">17010</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/9</td>
+				<td></td>
+				<td class="center"><a href="html/page/17/17010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>개인정보취급방침</td>
+				<td></td>
+				<td class="center">17020</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/9</td>
+				<td></td>
+				<td class="center"><a href="html/page/17/17020.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>매거진</td>
+				<td>매거진 메인</td>
+				<td></td>
+				<td class="center">18010</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/27</td>
+				<td></td>
+				<td class="center"><a href="html/page/18/18010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>List</td>
+				<td></td>
+				<td class="center">18021</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/27</td>
+				<td></td>
+				<td class="center"><a href="html/page/18/18021.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>View</td>
+				<td></td>
+				<td class="center">18022</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/27</td>
+				<td></td>
+				<td class="center"><a href="html/page/18/18022.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>iframe 약관</td>
+				<td>비회원약관</td>
+				<td></td>
+				<td class="center">19010</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/9</td>
+				<td></td>
+				<td class="center"><a href="html/page/19/19010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>이용약관</td>
+				<td></td>
+				<td class="center">19020</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/9</td>
+				<td></td>
+				<td class="center"><a href="html/page/19/19020.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>개인정보수집및이용동의약관</td>
+				<td></td>
+				<td class="center">19030</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/9</td>
+				<td></td>
+				<td class="center"><a href="html/page/19/19030.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>개인정보마케팅동의약관</td>
+				<td></td>
+				<td class="center">19040</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/9</td>
+				<td></td>
+				<td class="center"><a href="html/page/19/19040.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>팝업</td>
+				<td>교환신청</td>
+				<td></td>
+				<td class="center">pp010</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/28</td>
+				<td></td>
+				<td class="center"><a href="html/page/pp/pp010.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>나의 상품평</td>
+				<td></td>
+				<td class="center">pp020</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">11/29</td>
+				<td></td>
+				<td class="center"><a href="html/page/pp/pp020.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>반품신청</td>
+				<td></td>
+				<td class="center">pp030</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/1</td>
+				<td></td>
+				<td class="center"><a href="html/page/pp/pp030.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>배송구매교환</td>
+				<td></td>
+				<td class="center">pp040</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/5</td>
+				<td></td>
+				<td class="center"><a href="html/page/pp/pp040.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>사이즈추천</td>
+				<td>신발</td>
+				<td class="center">pp051</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/5</td>
+				<td></td>
+				<td class="center"><a href="html/page/pp/pp051.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td></td>
+				<td>의류</td>
+				<td class="center">pp052</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/7</td>
+				<td></td>
+				<td class="center"><a href="html/page/pp/pp052.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>상품문의하기</td>
+				<td></td>
+				<td class="center">pp060</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/9</td>
+				<td></td>
+				<td class="center"><a href="html/page/pp/pp060.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>상품평등록하기</td>
+				<td></td>
+				<td class="center">pp070</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/13</td>
+				<td></td>
+				<td class="center"><a href="html/page/pp/pp070.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>상품평수정하기</td>
+				<td></td>
+				<td class="center">pp080</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/14</td>
+				<td></td>
+				<td class="center"><a href="html/page/pp/pp080.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>위시리스트</td>
+				<td></td>
+				<td class="center">pp090</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/16</td>
+				<td></td>
+				<td class="center"><a href="html/page/pp/pp090.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>주문번호 조회</td>
+				<td></td>
+				<td class="center">pp100</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/19</td>
+				<td></td>
+				<td class="center"><a href="html/page/pp/pp100.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>쿠폰조회 및 적용</td>
+				<td></td>
+				<td class="center">pp110</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/21</td>
+				<td></td>
+				<td class="center"><a href="html/page/pp/pp110.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>회원탈퇴</td>
+				<td></td>
+				<td class="center">pp120</td>
+				<td class="center">김미나</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/23</td>
+				<td></td>
+				<td class="center"><a href="html/page/pp/pp120.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td>에러</td>
+				<td>404</td>
+				<td></td>
+				<td class="center">xx404</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/27</td>
+				<td></td>
+				<td class="center"><a href="html/page/xx/xx404.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+			<tr>
+				<td class="center"></td>
+				<td></td>
+				<td>500</td>
+				<td></td>
+				<td class="center">xx404</td>
+				<td class="center">구창근</td>
+				<td class="center"><em class="ico end">e</em></td>
+				<td class="center">12/27</td>
+				<td></td>
+				<td class="center"><a href="html/page/xx/xx500.html" target="_blank" title="새창열림">링크이동</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no, email=no">
+<meta name='viewport' content='width=760'>
+<meta name="description" content="">
+<meta name="keyword" content="">
+<title>플레이어</title>
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="../../css/mainUI.css">
+<script src="../../js/jquery-1.12.1.min.js"></script>
+<script src="../../js/jquery-1.12.1.min.js"></script>
+<script src="../../js/jquery.ba-outside-events.min.js"></script>
+<script src="../../js/jquery.dotdotdot.js"></script>
+<script src="../../js/mainUI.js"></script>
+<script src="../../js/jquery.bxslider.js"></script>
+
+<!--[if lt IE 9]>
+<script src="../../js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<!--[if lte IE 8]>
+<div class="ie8">
+    <span>PLAYER는 인터넷 익스플로러9 버전 이상의 최신 브라우저에 최적화되어있습니다. 익스플로러를 업데이트해주시거나, 다른 브라우저를 사용해주시길 바랍니다.</span>
+    <a href="http://windows.microsoft.com/ko-kr/internet-explorer/download-ie/">인터넷 익스플로러 업데이트</a>
+</div>
+<![endif]-->
+
+<div class="popup_wrap popup_tp01 wish">
+    <div class="popup_tit">
+        <p>나의 위시리스트 상품</p>
+    </div>
+    <div class="popup_cont">
+
+        <div class="tb_popup01">
+            <div>
+                <table>
+                    <caption>주문번호 조회</caption>
+                    <colgroup>
+                        <col style="width:57px" />
+                        <col style="width:350px" />
+                        <col style="width:129px" />
+                        <col style="width:164px" />
+                    </colgroup>
+
+                    <thead>
+                        <tr>
+                            <th class="check_cell" scope="col">
+                                <div class="check_single">
+                                    <input type="checkbox" id="check_all" name="check_all">
+                                    <label for="check_all"><span class="hidden">상품 전체 선택</span></label>
+                                </div>
+                            </th>
+                            <th scope="col">상품명</th>
+                            <th scope="col">정상가</th>
+                            <th scope="col">판매가</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                        <!-- 개발작업시, id와 label 일치 요망 -->
+                            <td class="check_cell">
+                                <div class="check_single">
+                                    <input type="checkbox" id="price_check_001" name="price">
+                                    <label for="price_check_001"><span class="hidden">001번째 상품 선택</span></label>
+                                </div>
+                            </td>
+                            <td class="name">
+                                <img src="http://placehold.it/58x58/ffffff?text=IMG" alt="주문상품사진">
+                                <strong class="name">[나이키/조던] 닥터마틴 8홀 워커 [나이키/조던] 닥터마틴 8홀 워커[나이키/조던] 닥터마틴 8홀 워커</strong>
+                                <strong class="goods_info">옵션</strong>
+                                <span>250</span><span>M</span><span>핑크</span>
+                            </td>
+                            <td>1,158,000 won</td>
+                            <td>1,111,111 won</td>
+                        </tr>
+                        <tr>
+                            <td class="check_cell">
+                                <div class="check_single">
+                                    <input type="checkbox" id="price_check_002" name="price">
+                                    <label for="price_check_002"><span class="hidden">002번째 상품 선택</span></label>
+                                </div>
+                            </td>
+                            <td class="name">
+                                <img src="http://placehold.it/58x58/ffffff?text=IMG" alt="주문상품사진">
+                                <strong class="name">[나이키/조던] 닥터마틴 8홀 워커 [나이키/조던] 닥터마틴 8홀 워커[나이키/조던] 닥터마틴 8홀 워커</strong>
+                                <strong class="goods_info">옵션</strong>
+                                <span>250</span><span>M</span><span>핑크</span>
+                            </td>
+                            <td>1,158,000 won</td>
+                            <td>1,111,111 won</td>
+                        </tr>
+                        <tr>
+                            <td class="check_cell">
+                                <div class="check_single">
+                                    <input type="checkbox" id="price_check_003" name="price">
+                                    <label for="price_check_003"><span class="hidden">003번째 상품 선택</span></label>
+                                </div>
+                            </td>
+                            <td class="name">
+                                <img src="http://placehold.it/58x58/ffffff?text=IMG" alt="주문상품사진">
+                                <strong class="name">[나이키/조던] 닥터마틴 8홀 워커 [나이키/조던] 닥터마틴 8홀 워커[나이키/조던] 닥터마틴 8홀 워커</strong>
+                                <strong class="goods_info">옵션</strong>
+                                <span>옵션내용옵션내용옵션내용옵션내용옵션내용</span>
+                            </td>
+                            <td>1,158,000 won</td>
+                            <td>1,111,111 won</td>
+                        </tr>
+                        <tr>
+                            <td class="check_cell">
+                                <div class="check_single">
+                                    <input type="checkbox" id="price_check_004" name="price">
+                                    <label for="price_check_004"><span class="hidden">004번째 상품 선택</span></label>
+                                </div>
+                            </td>
+                            <td class="name">
+                                <img src="http://placehold.it/58x58/ffffff?text=IMG" alt="주문상품사진">
+                                <strong class="name">[나이키/조던] 닥터마틴 8홀 워커 [나이키/조던] 닥터마틴 8홀 워커[나이키/조던] 닥터마틴 8홀 워커</strong>
+                                <strong class="goods_info">옵션</strong>
+                                <span>옵션내용옵션내용옵션내용옵션내용옵션내용</span>
+                            </td>
+                            <td>1,158,000 won</td>
+                            <td>1,111,111 won</td>
+                        </tr>
+                        <tr>
+                            <td class="check_cell">
+                                <div class="check_single">
+                                    <input type="checkbox" id="price_check_005" name="price">
+                                    <label for="price_check_005"><span class="hidden">005번째 상품 선택</span></label>
+                                </div>
+                            </td>
+                            <td class="name">
+                                <img src="http://placehold.it/58x58/ffffff?text=IMG" alt="주문상품사진">
+                                <strong class="name">[나이키/조던] 닥터마틴 8홀 워커 [나이키/조던] 닥터마틴 8홀 워커[나이키/조던] 닥터마틴 8홀 워커</strong>
+                                <strong class="goods_info">옵션</strong>
+                                <span>옵션내용옵션내용옵션내용옵션내용옵션내용</span>
+                            </td>
+                            <td>1,158,000 won</td>
+                            <td>1,111,111 won</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div> <!-- // order_history -->
+
+        <div class="delete_box">
+            <div class="check">
+                <input type="checkbox" id="delete_select" name="delete">
+                <label for="delete_select">선택상품을</label>
+            </div>
+            <button class="tb_btn white" type="button">선택삭제</button>
+        </div>
+        <div class="btn_popup">
+            <a href="#none" class="btn_rd">장바구니 담기</a>
+            <a href="#none" class="btn_gy">전체 위시리스트 보기</a>
+        </div>
+    </div> <!-- // popup_cont -->
+
+    <div class="popup_close">
+        <a href="#none" class="btn_close">팝업창 닫기</a>
+    </div>
+</div> <!-- // popup -->
+</body>
+</html>

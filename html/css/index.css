@@ -1,0 +1,82 @@
+@charset "utf-8";
+
+/* 타이틀 */
+.index .common_tit_wrap {margin-top:23px;}
+
+/* 메인페이지 6단 배너 */
+.index .banner_list {font-size:0; margin-top:24px; overflow:hidden;}
+.index .banner_list > li {display:inline-block; float:left; position:relative; margin-left:8px; margin-top:10px; width:712px; height:200px;}
+.index .banner_list > li:nth-child(odd) {margin-left:0;}
+.index .banner_list > li:nth-child(1),
+.index .banner_list > li:nth-child(2) {margin-top:0;}
+.index .banner_list > li a {display:inline-block; width:712px; height:200px;}
+
+.index .banner_list .bx-controls-direction a {display:inline-block; position:absolute; width:70px; height:70px; border-radius:50%; text-indent:-9999px; top:50%; margin-top:-35px; background-repeat:no-repeat; opacity:0.2;}
+.index .banner_list .bx-controls-direction .bx-prev {left:31px; background-image:url(../img/btn/btn_upperslide_prev.png);}
+.index .banner_list .bx-controls-direction .bx-next {right:31px; background-image:url(../img/btn/btn_upperslide_next.png);}
+.index .banner_list .bx-pager {position:absolute; bottom:14px; width:100%; text-align:center; font-size:0;}
+.index .banner_list .bx-pager .bx-pager-item {display:inline; margin-left:7px;}
+.index .banner_list .bx-pager > div:first-child {margin:0;}
+.index .banner_list .bx-pager .bx-pager-item a {display:inline-block; width:12px; height:12px; border-radius:50%; background:#fff; text-indent:-9999px;}
+.index .banner_list .bx-pager .bx-pager-item a.active {background:#666;}
+
+/* 브랜드 뉴스(매거진) */
+.index .magazine {position:relative;}
+.index .magazine > ul {font-size:0;}
+.index .magazine > ul > li {display:inline-block; margin-left:26px; border-top:1px solid #ddd; border-bottom:1px solid #ddd; padding:17px 0;}
+.index .magazine > ul > li:nth-child(odd) {margin-left:0;}
+.index .magazine > ul > li:nth-child(-n+2) {margin-top:0; border-bottom:none;}
+.index .magazine > ul > li > a {display:inline-block; position:relative; width:703px;}
+.index .magazine > ul > li > a img {width:247px; height:201px;}
+.index .magazine > ul > li > a:hover:before,
+.index .magazine > ul > li > a:focus:before,
+.index .magazine > ul > li > a:active:before {content:""; display:inline-block; box-sizing:border-box; width:247px; height:201px; position:absolute; border:5px solid #d03c50;}
+.index .magazine > ul > li .mz_text {float:right; box-sizing:border-box; width:456px; padding:0 20px;}
+.index .magazine > ul > li .mz_text .tit {font-size:16px; line-height:26px; font-weight:700; height:52px; overflow:hidden;}
+.index .magazine > ul > li .mz_text .tit span:after {content:"|"; display:inline-block; width:32px; line-height:26px; text-align:center; color:#666; font-weight:300;}
+.index .magazine > ul > li .mz_text .tit em {color:#d03c50; font-size:13px; font-weight:400;}
+.index .magazine > ul > li .mz_text .info {margin-top:8px;}
+.index .magazine > ul > li .mz_text .info dt,
+.index .magazine > ul > li .mz_text .info dd {display:inline; font-size:12px; color:#999;}
+.index .magazine > ul > li .mz_text .info dt {}
+.index .magazine > ul > li .mz_text .info dt:after {content:":"; padding:0 5px;}
+.index .magazine > ul > li .mz_text .info dd {}
+.index .magazine > ul > li .mz_text .info dd:after {content:"|"; position:relative; top:-1px; padding:0 13px;}
+.index .magazine > ul > li .mz_text .info dd:last-of-type {display:inline-block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; width:200px; vertical-align:bottom;}
+.index .magazine > ul > li .mz_text .info dd:last-of-type:after {display:none;}
+.index .magazine > ul > li .mz_text .text {font-size:14px; line-height:24px; color:#999; height:96px; margin-top:25px;}
+.index .magazine > a {display:inline-block; position:absolute; right:0; top:-51px; width:46px; height:9px; text-indent:-9999px; background:url(../img/btn/btn_infobox_more.png);}
+
+/* 브랜드 룩북 */
+.index .lookbook {position:relative;}
+.index .lookbook > ul {font-size:0;}
+.index .lookbook > ul > li {display:inline-block; width:226px; margin-left:15px; margin-top:15px; border-bottom:1px solid #ddd;}
+.index .lookbook > ul > li:nth-child(6n+1) {margin-left:0;}
+.index .lookbook > ul > li:nth-child(-n+6) {margin-top:0;}
+.index .lookbook > ul > li .lb_text {padding:0 8px;}
+.index .lookbook > ul > li > a {display:inline-block; position:relative; width:226px;}
+.index .lookbook > ul > li > a:hover:before,
+.index .lookbook > ul > li > a:focus:before,
+.index .lookbook > ul > li > a:active:before {content:""; display:inline-block; box-sizing:border-box; width:226px; height:318px; position:absolute; border:5px solid #d03c50;}
+.index .lookbook > ul > li > a img {width:226px; height:318px;}
+.index .lookbook > ul > li p {font-size:16px; line-height:26px; font-weight:700; height:52px; margin-top:10px;}
+.index .lookbook > ul > li .info {margin:11px 0 7px;}
+.index .lookbook > ul > li .info dt,
+.index .lookbook > ul > li .info dd {display:inline-block; font-size:12px; line-height:20px; color:#999;}
+.index .lookbook > ul > li .info dt:after {content:":"; padding:0 5px;}
+.index .lookbook > ul > li .info dd {}
+.index .lookbook > ul > li .info dd:first-of-type:after {content:"|"; position:relative; top:-1px; padding:0 13px;}
+.index .lookbook > ul > li .info dd:last-of-type {display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.index .lookbook > a {display:inline-block; position:absolute; right:0; top:-51px; width:46px; height:9px; text-indent:-9999px; background:url(../img/btn/btn_infobox_more.png);}
+
+/* 기획전 */
+.index .exhibition {font-size:0; margin:29px 0 22px;}
+.index .exhibition .eb_wrap {display:inline-block; overflow:hidden; width:467px; margin-left:15px;}
+.index .exhibition > div:first-of-type {margin-left:0 !important;}
+.index .exhibition .eb_wrap .eb_banner {position:relative; float:left; width:226px; height:406px;}
+.index .exhibition .eb_wrap .eb_banner > img {display:inline-block; position:absolute; box-sizing:border-box; left:0; top:0; width:226px; height:406px; border:1px solid #ddd;}
+.index .exhibition .eb_wrap > ul {float:right; width:226px; border-top:1px solid #f1f1f1;}
+.index .exhibition .eb_wrap > ul > li {position:relative; padding:3px; border-bottom:1px solid #f1f1f1;}
+.index .exhibition .eb_wrap > ul > li > a {display:inline-block; box-sizing:border-box; width:100%; line-height:38px; font-size:16px; padding:0 9px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.index .exhibition .eb_wrap > ul > li.on > a {background:#efefef; font-weight:700;}
+.index .exhibition .eb_wrap > ul > li.on:before {content:""; display:block; left:-10px; top:calc(50% - 7px); position:absolute; border-top:7px solid transparent; border-bottom:7px solid transparent; border-right:13px solid #efefef;}

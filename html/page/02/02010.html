@@ -1,0 +1,1777 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no, email=no">
+<meta name="viewport" content="width=1480">
+<meta name="description" content="">
+<meta name="keyword" content="">
+<title>플레이어</title>
+<link rel="stylesheet" href="../../css/common.css"><!-- 리셋+공통CSS -->
+<link rel="stylesheet" href="../../css/mainUI.css"><!-- 서브페이지CSS -->
+<script src="../../js/jquery-1.12.1.min.js"></script>
+<script src="../../js/jquery.ba-outside-events.min.js"></script>
+<script src="../../js/jquery.dotdotdot.js"></script>
+<script src="../../js/placeholders.min.js"></script>
+<script src="../../js/mainUI.js"></script>
+<script src="../../js/jquery.bxslider.js"></script>
+<script>
+	$(function(){
+		var relate_slider = $('.relate .bxslider').bxSlider({ //관련상품
+			pager:false,
+			auto:false,
+			controls:true,
+			prevText:'이전 관련상품 리스트',
+			nextText:'다음 관련상품 리스트',
+			slideWidth:310,
+		});
+		
+		var lb_slider = $('.lookbook .bxslider').bxSlider({ //LOOKBOOK
+			pager:false,
+			auto:false,
+			controls:true,
+			prevText:'이전 LOOKBOOK 리스트',
+			nextText:'다음 LOOKBOOK 리스트',
+			slideWidth:299,
+		});
+		
+		var today_slider = $('.today_view .bxslider').bxSlider({ //오늘본상품
+			pager:false,
+			controls:true,
+			prevText:'이전 오늘 본 상품 리스트 ',
+			nextText:'다음 오늘 본 상품 리스트',
+			slideWidth:94,
+			slideMargin:12,
+			minSlides:13,
+			maxSlides:13,
+			moveSlides:13
+		});
+		
+		/* 클래스명 변경으로 인한 수정 20161213 */
+		$('#content .product_info > dl dt > a,#content .product_info > dl dd > a').on('click focus',function(){ //도움말, 레벨할인가 열기
+			$('#content .product_info dl .popup_layer').hide(); 
+			$(this).next('.popup_layer').show();
+		});
+		
+		$('.layer_box > a').on('click blur',function(){ //도움말, 레벨할인가 닫기
+			$(this).parents('.popup_layer').hide(); 
+		});
+		
+		$('.tb.cont td.tit a').on('click',function(){
+			if($(this).next('div').css('display') == 'none'){
+				$(this).parents('table').find('td').removeClass('on');
+				$(this).parent().addClass('on');	
+			} else {
+				$(this).parents('table').find('td').removeClass('on');	
+			};
+		});
+		/* //클래스명 변경으로 인한 수정 20161213 */
+		
+		// 팝업 내 탭 제어
+		$('.popup_wrap .tab_cont').hide();
+		$('.popup_wrap ul.tab_list li:first').addClass('on').show();
+		$('.popup_wrap .tab_cont:first').show();
+		
+		$('.popup_wrap ul.tab_list li a,.detail_page .product_subtit .btn_list > a').click(function() {
+			//$(this).parent().addClass('on').siblings().removeClass('on');
+			$('.popup_wrap .tab_cont').hide();
+			var onTab = $(this).attr('href');
+			$(onTab).show();
+			$('.popup_wrap ul.tab_list li').removeClass('on');
+			var tabIndex = onTab.charAt(onTab.length - 1) - 1;
+			$('.popup_wrap ul.tab_list li:eq('+ tabIndex +')').addClass('on');
+			return false;
+		});
+	});
+	
+	function goConfirm(){
+		var move_val = confirm('장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?(테스트메세지)');
+		if(move_val){
+			//location.href="#";	
+		} else {
+			return false;
+		};
+	};
+	
+	function goNext(url){
+		//location.href=url;
+	};
+</script>
+<!--[if lt IE 9]>
+<script src="../../js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<!--[if lte IE 8]>
+<div class="ie8">
+    <span>PLAYER는 인터넷 익스플로러9 버전 이상의 최신 브라우저에 최적화되어있습니다. 익스플로러를 업데이트해주시거나, 다른 브라우저를 사용해주시길 바랍니다.</span>
+    <a href="http://windows.microsoft.com/ko-kr/internet-explorer/download-ie/">인터넷 익스플로러 업데이트</a>
+</div>
+<![endif]-->
+<div class="skip"><!-- 스킵 네비게이션 -->
+    <a href="#content">본문 바로가기</a>
+</div>
+
+<div class="wrap type2"><!-- 페이지 유형별 클래스 분리 -->
+	<div class="header_wrap skin1"><!-- 스킨별 타입 클래스 분리 -->
+    	<header>
+        	<h1><a href="#"><img src="../../img/img/img_mainlogo.png" alt="패션멀티샵 플레이어"></a></h1>
+            <nav>
+                <strong>네비게이션 메뉴<a href="#">즐겨찾기</a></strong>
+                <ul>
+                    <li><a href="#">신상품</a></li>
+                    <li><a href="#">SALE</a></li>
+                    <li><a href="#">쿠폰샵</a></li>
+                    <li><a href="#">판매랭킹</a></li>
+                    <li><a href="#">기획전</a></li>
+                    <li><a href="#">브랜드</a></li>
+                </ul>
+                <dl>
+                    <dt><a href="#">품목</a></dt>
+                    <dd>
+                        <ul>
+                            <li>
+                                <a href="#">베스트</a>
+                                <ul>
+                                    <li><a href="#">점퍼</a></li>
+                                    <li><a href="#">스웨트셔츠</a></li>
+                                    <li><a href="#">재킷</a></li>
+                                    <li><a href="#">후드/집업</a></li>
+                                    <li><a href="#">코트</a></li>
+                                    <li><a href="#">런닝/워킹화</a></li>
+                                    <li><a href="#">패딩/다운</a></li>
+                                    <li><a href="#">캔버스/단화</a></li>
+                                    <li><a href="#">비니</a></li>
+                                    <li><a href="#">바지</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">신발</a>
+                                <ul>
+                                    <li><a href="#">2차메뉴</a></li>
+                                    <li><a href="#">2차메뉴</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">상의</a></li>
+                            <li><a href="#">아우터</a></li>
+                            <li><a href="#">하의</a></li>
+                            <li><a href="#">가방</a></li>
+                            <li><a href="#">모자</a></li>
+                            <li><a href="#">시계</a></li>
+                            <li><a href="#">속옷</a></li>
+                            <li><a href="#">액세서리</a></li>
+                            <li><a href="#">생활/식품</a></li>
+                            <li>
+                                <a href="#">디지털</a>
+                                <ul>
+                                    <li><a href="#">2차메뉴</a></li>
+                                    <li><a href="#">2차메뉴</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </dd>
+                    <dt><a href="#">스토어</a></dt>
+                    <dd>
+                        <ul>
+                             <li>
+                                <a href="#">1차메뉴</a>
+                                <ul>
+                                    <li><a href="#">2차메뉴</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </dd>
+                    <dt><a href="#">매거진</a></dt>
+                    <dd>
+                        <ul>
+                             <li>
+                                <a href="#">1차메뉴</a>
+                                <ul>
+                                    <li><a href="#">2차메뉴</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+            </nav>
+            <ul>
+            	<li><a href="#">LOGIN</a></li>
+                <li><a href="#">JOIN</a></li>
+                <li><a href="#">MYPAGE</a></li>
+                <li><a href="#">CART<em>3</em></a></li>
+                <li><a href="#">DELIVERY<em>3</em></a></li>
+            </ul>
+            <fieldset>
+            	<legend>제품명 검색</legend>
+            	<input type="text" title="검색어 입력">
+                <button type="submit">검색</button>
+	        </fieldset>
+		</header>
+    </div>
+	<div class="main_bg type2">
+    	<h2>SHOES</h2>
+    </div>
+    <section class="detail_page">
+		<div class="content_nav type_a"><!-- 컨텐츠 TOP내비 -->
+        	<ul class="type08">
+            	<li><a href="#">메뉴명</a></li>
+                <li><a href="#">메뉴명</a></li>
+                <li><a href="#">메뉴명</a></li>
+                <li><a href="#">메뉴명</a></li>
+                <li><a href="#">메뉴명</a></li>
+                <li><a href="#">메뉴명</a></li>
+                <li><a href="#">메뉴명</a></li>
+                <li><a href="#">메뉴명</a></li>
+			</ul>
+            <!-- 
+            	배경색 타입에 따른 클래스 정의
+            	type_a : 버튼(#333), 배경(#666), 글자색(#fff)
+                type_b : 버튼(#999), 배경(#efefef), 글자색(#666)
+			-->
+        	<a href="#"><span>3~4글자</span></a>
+            <!-- 좌측 버튼 메뉴 -->
+            <ul class="type10">
+                <!--
+                    메뉴 개수에 따른 클래스 정의
+                    type05 ~ type13
+                -->
+                <li> <!-- 현재 탭메뉴 위치에 있을 경우 on클래스 부여 -->
+                	<a href="#">메뉴명</a>
+                    <ul>
+                    	<li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                    </ul>
+                </li>
+                <li>
+                	<a href="#">메뉴명</a>
+                    <ul>
+                    	<li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                    </ul>
+                </li>
+                <li>
+                	<a href="#">메뉴명</a>
+                    <ul>
+                    	<li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                    </ul>
+                </li>
+                <li>
+                	<a href="#">메뉴명</a>
+                    <ul>
+                    	<li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                    </ul>
+                </li>
+                <li>
+                	<a href="#">메뉴명</a>
+                    <ul>
+                    	<li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                    </ul>
+                </li>
+                <li>
+                	<a href="#">메뉴명</a>
+                    <ul>
+                    	<li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                    </ul>
+                </li>
+                <li>
+                	<a href="#">메뉴명</a>
+                    <ul>
+                    	<li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                    </ul>
+                </li>
+                <li>
+                	<a href="#">메뉴명</a>
+                    <ul>
+                    	<li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                    </ul>
+                </li>
+                <li>
+                	<a href="#">메뉴명</a>
+                    <ul>
+                    	<li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                    </ul>
+                </li>
+                <li>
+                	<a href="#">메뉴명</a>
+                    <ul>
+                    	<li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- //좌측 버튼 메뉴 -->
+            <a href="#"><span>3~4글자</span></a>
+            <!-- 우측 버튼 메뉴 -->
+            <ul class="type05">
+                <li> <!-- 현재 탭메뉴 위치에 있을 경우 on클래스 부여 -->
+                	<a href="#">메뉴명</a>
+                    <ul>
+                    	<li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                    </ul>
+                </li>
+                <li>
+                	<a href="#">메뉴명</a>
+                    <ul>
+                    	<li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                    </ul>
+                </li>
+                <li>
+                	<a href="#">메뉴명</a>
+                    <ul>
+                    	<li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                    </ul>
+                </li>
+                <li>
+                	<a href="#">메뉴명</a>
+                    <ul>
+                    	<li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                    </ul>
+                </li>
+                <li>
+                	<a href="#">메뉴명</a>
+                    <ul>
+                    	<li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                        <li><a href="#">하위메뉴명</a></li>
+                    </ul>
+                </li>
+            </ul>
+			<!-- //우측 버튼 메뉴 -->
+        </div>
+        <div id="content"><!-- 컨텐츠 삽입 영역 -->
+			<div class="brand_info"><!-- 브랜드 소개 -->
+            	<img src="http://placehold.it/192x132/ffffff?text=BRAND" alt="">
+                <h3>BRAND NAME<small>브랜드 이름과 설명은 적당한 길이여야 합니다. 내용이 지나치게 길면 보기 좋지 않습니다. 브랜드 이름과 설명은 적당한 길이여야 합니다. 내용이 지나치게 길면 보기 좋지 않습니다.</small></h3>
+                <p class="ellipsis">
+                	내용도 적당히 좀 씁니다. 두 줄 넘게 빼지 맙시다. 제한걸었습니다.<br>
+                	설명은 굵고 짧게 쓰는게 미덕입니다. 설명은 굵고 짧게 쓰는게 미덕입니다. 설명은 굵고 짧게 쓰는게 미덕입니다. 설명은 굵고 짧게 쓰는게 미덕입니다. 설명은 굵고 짧게 쓰는게 미덕입니다. 설명은 굵고 짧게 쓰는게 미덕입니다. 
+                </p>
+                <a href="#">BRAND SHOP</a>
+            </div>
+            <div class="product_wrap"><!-- 전체 영역 -->
+            	<div class="product_box"><!-- 상품 영역 -->
+                    <div class="product_info"><!-- 상품 정보 -->
+                        <h4>제품 이름이 불필요하게 길면 레이아웃이 기획 및 디자인 의도와 다르게 깔끔하게 나오지 않을 수 있습니다.</h4>
+                        <dl>
+                            <dt>판매가</dt>
+                            <dd>
+                                <span class="point">9,999,999 won</span>
+                                (회원이 아닌 경우 할인 적용 불가)
+                            </dd>
+                            <dt>플레이어 회원가</dt>
+                            <dd>
+                                <span class="hidden">원가</span><em>9,999,999</em><!-- 원가 -->
+                                <span class="hidden">할인율</span><strong class="discount">99</strong><!-- 할인율 -->
+                                <span class="hidden">실판매가</span><strong class="real_price">9,999,999 won</strong><!-- 실 판매가 -->
+                            </dd>
+                            <dt>레벨할인가</dt>
+                            <dd>
+                                <small>9,999,999 won ~ 9,999,999 won</small><!-- 등급별 판매가 -->
+                                <a class="price" href="#none">레벨할인가 확인하기</a><!-- 등급별 판매가 확인버튼 -->
+                                <div class="popup_layer"><!-- 클래스명 변경 20161213 -->
+                                	<div class="layer_box">
+                                    	<p class="tit">레벨할인가 안내</p>
+                                        <img src="http://placehold.it/300x400/cccccc?text=HELP" alt="">
+                                        <div class="hidden">
+                                            도움말 대체텍스트
+                                        </div>
+                                        <a href="#none">닫기</a>
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>적립금</dt>
+                            <dd>
+                                <span class="point">9,999,999 point</span>
+                            </dd>
+                            <dt>카드 혜택
+                            	<a class="help" href="#none">도움말</a>
+                                <div class="popup_layer"><!-- 클래스명 변경 20161213 -->
+                                	<div class="layer_box">
+                                    	<p class="tit">무이자 할부 행사안내</p>
+                                        <img src="http://placehold.it/300x400/cccccc?text=HELP" alt="">
+                                        <div class="hidden">
+                                            도움말 대체텍스트
+                                        </div>
+                                        <a href="#none">닫기</a>
+                                    </div>
+                                </div>
+                            </dt>
+                            <dd>
+                                999만원 이상 무이자 할부
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>브랜드</dt>
+                            <dd>
+                                브랜드이름이 쓸데없이 길어야할 필요가 있나요? 어차피 길면 잘립니다.
+                            </dd>
+                            <dt>상품코드</dt>
+                            <dd>
+                                99999999999999999999999999999
+                            </dd>
+                            <dt>제조국가</dt>
+                            <dd>
+                                조선민주주의인민공화국
+                            </dd>
+                            <dt>배송 정보
+                            	<a class="help" href="#none">도움말</a>
+                                <div class="popup_layer"><!-- 클래스명 변경 20161213 -->
+                                	<div class="layer_box">
+                                    	<p class="tit">배송정보 안내</p>
+                                        <img src="http://placehold.it/300x400/cccccc?text=HELP" alt="">
+                                        <div class="hidden">
+                                            도움말 대체텍스트
+                                        </div>
+                                        <a href="#none">닫기</a>
+                                    </div>
+                                </div>
+                            </dt>
+                            <dd>
+                                <strong class="deli">무료배송</strong>
+                                업체배송
+                            </dd>
+                            <dt>평균 발송일</dt>
+                            <dd>
+                                <strong class="date">999.9일</strong>
+                                (판매업체 평균 출고 소요시간)
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="product_view"><!-- 상품 VIEW -->
+                        <img src="http://placehold.it/500/ffffff?text=PRODUCT" alt="">
+                        <ul class="thumb">
+                            <li><a href="#"><img src="http://placehold.it/94/ffffff?text=01" alt=""></a></li>
+                            <li><a href="#"><img src="http://placehold.it/94/ffffff?text=02" alt=""></a></li>
+                            <li><a href="#"><img src="http://placehold.it/94/ffffff?text=03" alt=""></a></li>
+                            <li><a href="#"><img src="http://placehold.it/94/ffffff?text=04" alt=""></a></li>
+                            <li><a href="#"><img src="http://placehold.it/94/ffffff?text=05" alt=""></a></li>
+                            <li><a href="#"><img src="http://placehold.it/94/ffffff?text=06" alt=""></a></li>
+                        </ul>
+                        <div class="share">
+                            <ul class="cate">
+                                <li>카테고리1</li>
+                                <li>카테고리2</li>
+                            </ul>
+                            <ul class="tag">
+                                <li><a href="#">관련태그1</a></li>
+                                <li><a href="#">관련태그2</a></li>
+                                <li><a href="#">관련태그3</a></li>
+                                <li><a href="#">관련태그4</a></li>
+                                <li><a href="#">관련태그5</a></li>
+                            </ul>
+                            <ul class="sns">
+                                <li><a href="#">페이스북 공유</a></li>
+                                <li><a href="#">트위터 공유</a></li>
+                                <li><a href="#">핀터레스트 공유</a></li>
+                                <li><a href="#">카카오스토리 공유</a></li>
+                                <li><a href="#">html</a></li>
+                                <li><a href="#">URL</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="product_payment"><!-- 상품 결제 -->
+                    	<p class="product_subtit">OPTIONS</p>
+                        <div class="option">
+                            <dl>
+                                <dt><label for="option1">옵션1</label></dt>
+                                <dd>
+                                    <div class="select_box long">
+                                        <label for="option1">1</label>
+                                        <select id="option1">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
+                                </dd>
+                                <dt><label for="option2">옵션2</label></dt>
+                                <dd>
+                                    <div class="select_box long">
+                                        <label for="option2">1</label>
+                                        <select id="option2">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
+                                </dd>
+                                <dt><label>수량</label></dt>
+                                <dd>
+                                	<!--
+                                    <div class="select_box">
+                                        <label for="count">1</label>
+                                        <select id="count">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
+                                    -->
+									<!-- 셀렉트 박스에서 수량으로 변경 20161214 -->
+                                    <div class="count_box">
+                                        <input type="text" maxlength="3" value="999">
+                                        <button type="button">수량감소</button>
+                                        <button type="button">수량증가</button>
+                                    </div>
+                                    <!-- //셀렉트 박스에서 수량으로 변경 20161214 -->
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="btn_wrap">
+                            <button type="submit">장바구니 담기</button>
+                            <a href="#none" class="modal_btn" data-n="m_popup_wish">위시리스트 추가</a> <!-- 20161221 마크업 수정 -->
+                            <a href="#none">재입고 문자 받기</a> <!-- 20161221 마크업 수정 -->
+                            <button type="submit">BUY NOW</button>
+                        </div>
+                        
+                        <!-- 모달 -->
+                        <div class="layer m_popup_wish">
+                            <div class="layer_box type1">
+                                <!-- 모달팝업 내용삽입 영역 -->
+                                <div class="popup_wrap popup_tp01 wish">
+                                    <div class="popup_tit">
+                                        <p>나의 위시리스트 상품</p>
+                                    </div>
+                                    <div class="popup_cont">
+                                
+                                        <div class="tb_popup01">
+                                            <div>
+                                                <table>
+                                                    <caption>주문번호 조회</caption>
+                                                    <colgroup>
+                                                        <col style="width:57px" />
+                                                        <col style="width:350px" />
+                                                        <col style="width:129px" />
+                                                        <col style="width:164px" />
+                                                    </colgroup>
+                                
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="check_cell" scope="col">
+                                                                <div class="check_single">
+                                                                    <input type="checkbox" id="check_all" name="check_all">
+                                                                    <label for="check_all"><span class="hidden">상품 전체 선택</span></label>
+                                                                </div>
+                                                            </th>
+                                                            <th scope="col">상품명</th>
+                                                            <th scope="col">정상가</th>
+                                                            <th scope="col">판매가</th>
+                                                        </tr>
+                                                    </thead>
+                                
+                                                    <tbody>
+                                                        <tr>
+                                                        <!-- 개발작업시, id와 label 일치 요망 -->
+                                                            <td class="check_cell">
+                                                                <div class="check_single">
+                                                                    <input type="checkbox" id="price_check_001" name="price">
+                                                                    <label for="price_check_001"><span class="hidden">001번째 상품 선택</span></label>
+                                                                </div>
+                                                            </td>
+                                                            <td class="name">
+                                                                <img src="http://placehold.it/58x58/ffffff?text=IMG" alt="주문상품사진">
+                                                                <strong class="name">[나이키/조던] 닥터마틴 8홀 워커 [나이키/조던] 닥터마틴 8홀 워커[나이키/조던] 닥터마틴 8홀 워커</strong>
+                                                                <strong class="goods_info">옵션</strong>
+                                                                <span>250</span><span>M</span><span>핑크</span>
+                                                            </td>
+                                                            <td>1,158,000 won</td>
+                                                            <td>1,111,111 won</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="check_cell">
+                                                                <div class="check_single">
+                                                                    <input type="checkbox" id="price_check_002" name="price">
+                                                                    <label for="price_check_002"><span class="hidden">002번째 상품 선택</span></label>
+                                                                </div>
+                                                            </td>
+                                                            <td class="name">
+                                                                <img src="http://placehold.it/58x58/ffffff?text=IMG" alt="주문상품사진">
+                                                                <strong class="name">[나이키/조던] 닥터마틴 8홀 워커 [나이키/조던] 닥터마틴 8홀 워커[나이키/조던] 닥터마틴 8홀 워커</strong>
+                                                                <strong class="goods_info">옵션</strong>
+                                                                <span>250</span><span>M</span><span>핑크</span>
+                                                            </td>
+                                                            <td>1,158,000 won</td>
+                                                            <td>1,111,111 won</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="check_cell">
+                                                                <div class="check_single">
+                                                                    <input type="checkbox" id="price_check_003" name="price">
+                                                                    <label for="price_check_003"><span class="hidden">003번째 상품 선택</span></label>
+                                                                </div>
+                                                            </td>
+                                                            <td class="name">
+                                                                <img src="http://placehold.it/58x58/ffffff?text=IMG" alt="주문상품사진">
+                                                                <strong class="name">[나이키/조던] 닥터마틴 8홀 워커 [나이키/조던] 닥터마틴 8홀 워커[나이키/조던] 닥터마틴 8홀 워커</strong>
+                                                                <strong class="goods_info">옵션</strong>
+                                                                <span>옵션내용옵션내용옵션내용옵션내용옵션내용</span>
+                                                            </td>
+                                                            <td>1,158,000 won</td>
+                                                            <td>1,111,111 won</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="check_cell">
+                                                                <div class="check_single">
+                                                                    <input type="checkbox" id="price_check_004" name="price">
+                                                                    <label for="price_check_004"><span class="hidden">004번째 상품 선택</span></label>
+                                                                </div>
+                                                            </td>
+                                                            <td class="name">
+                                                                <img src="http://placehold.it/58x58/ffffff?text=IMG" alt="주문상품사진">
+                                                                <strong class="name">[나이키/조던] 닥터마틴 8홀 워커 [나이키/조던] 닥터마틴 8홀 워커[나이키/조던] 닥터마틴 8홀 워커</strong>
+                                                                <strong class="goods_info">옵션</strong>
+                                                                <span>옵션내용옵션내용옵션내용옵션내용옵션내용</span>
+                                                            </td>
+                                                            <td>1,158,000 won</td>
+                                                            <td>1,111,111 won</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="check_cell">
+                                                                <div class="check_single">
+                                                                    <input type="checkbox" id="price_check_005" name="price">
+                                                                    <label for="price_check_005"><span class="hidden">005번째 상품 선택</span></label>
+                                                                </div>
+                                                            </td>
+                                                            <td class="name">
+                                                                <img src="http://placehold.it/58x58/ffffff?text=IMG" alt="주문상품사진">
+                                                                <strong class="name">[나이키/조던] 닥터마틴 8홀 워커 [나이키/조던] 닥터마틴 8홀 워커[나이키/조던] 닥터마틴 8홀 워커</strong>
+                                                                <strong class="goods_info">옵션</strong>
+                                                                <span>옵션내용옵션내용옵션내용옵션내용옵션내용</span>
+                                                            </td>
+                                                            <td>1,158,000 won</td>
+                                                            <td>1,111,111 won</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div> <!-- // order_history -->
+                                
+                                        <div class="delete_box">
+                                            <div class="check">
+                                                <input type="checkbox" id="delete_select" name="delete">
+                                                <label for="delete_select">선택상품을</label>
+                                            </div>
+                                            <button class="tb_btn white" type="button">선택삭제</button>
+                                        </div>
+                                        <div class="btn_popup">
+                                            <a href="#" class="btn_rd">장바구니 담기</a>
+                                            <a href="#" class="btn_gy">전체 위시리스트 보기</a>
+                                        </div>
+                                    </div> <!-- // popup_cont -->
+                                
+                                    <div class="popup_close">
+                                        <a href="#none" class="btn_close modal_btn">팝업창 닫기</a>
+                                    </div>
+                                </div> <!-- // popup -->
+                                <!-- //모달팝업 내용삽입 영역 -->
+                            </div>
+                        </div>
+                        <!-- //모달 -->
+                    </div>
+				</div>
+                <div class="product_relate"><!-- 관련 정보 -->
+                	<div class="list relate">
+                    	<strong>관련상품</strong>
+                        <!-- 해당 UI를 지원하는 플러그인이 없는 관계로 9개씩 리스트를 잘라서 연결해주셔야합니다. -->
+                        <ul class="bxslider">
+                        	<li>
+                            	<ul>
+                                	<li><a href="#"><img src="http://placehold.it/94/ffffff?text=01" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=02" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=03" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=04" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=05" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=06" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=07" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=08" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=09" alt="상품명">9,999,999 won</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                            	<ul>
+                                	<li><a href="#"><img src="http://placehold.it/94/ffffff?text=10" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=11" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=12" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=13" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=14" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=15" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=16" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=17" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=18" alt="상품명">9,999,999 won</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                            	<ul>
+                                	<li><a href="#"><img src="http://placehold.it/94/ffffff?text=19" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=20" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=21" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=22" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=23" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=24" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=25" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=26" alt="상품명">9,999,999 won</a></li>
+                                    <li><a href="#"><img src="http://placehold.it/94/ffffff?text=27" alt="상품명">9,999,999 won</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list lookbook">
+                    	<strong>브랜드 룩북</strong>
+                        <ul class="bxslider">
+                        	<li><a href="#"><img src="http://placehold.it/299x133/ffffff?text=01" alt="브랜드명"></a></li>
+                            <li><a href="#"><img src="http://placehold.it/299x133/ffffff?text=02" alt="브랜드명"></a></li>
+                            <li><a href="#"><img src="http://placehold.it/299x133/ffffff?text=03" alt="브랜드명"></a></li>
+                            <li><a href="#"><img src="http://placehold.it/299x133/ffffff?text=04" alt="브랜드명"></a></li>
+                            <li><a href="#"><img src="http://placehold.it/299x133/ffffff?text=05" alt="브랜드명"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="product_detail"><!-- 상품 상세 -->
+            	<div class="detail_clause size"><!-- 사이즈 정보 -->
+            		<div class="product_subtit">SIZE INFO<small>사이즈 정보</small></div>
+                    <div class="detail">
+                    	<div class="size_cont size_table">
+                        	<strong>실측 사이즈</strong>
+                            <table>
+                            	<caption>각 사이즈별 기장, 어깨너비, 가슴단면, 소매길이(단위:cm) 정보 표</caption>
+                                <colgroup>
+                                	<col style="width:22%;">
+                                    <col style="width:12%;">
+                                    <col style="width:22%;">
+                                    <col style="width:22%;">
+                                    <col style="width:22%;">
+                                </colgroup>
+                                <thead>
+                                	<tr>
+                                        <th scope="col">cm</th>
+                                        <th scope="col">총장</th>
+                                        <th scope="col">어깨너비</th>
+                                        <th scope="col">가슴단면</th>
+                                        <th scope="col">소매길이</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                	<tr>
+                                    	<th scope="row">블랙_XS</th>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                    </tr>
+                                    <tr>
+                                    	<th scope="row">블랙_S</th>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                    </tr>
+                                    <tr>
+                                    	<th scope="row">블랙_M</th>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                    </tr>
+                                    <tr>
+                                    	<th scope="row">블랙_L</th>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                    </tr>
+                                    <tr>
+                                    	<th scope="row">블랙_XL</th>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                    </tr>
+                                    <tr>
+                                    	<th scope="row">블랙_XXL</th>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                        <td>99.9</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <ul>
+                            	<li>위 사이즈표는 플레이어스토어 측정방식을 기준으로 작성되었습니다.</li>
+                                <li>기존에 가지고 계신 옷 실측을 입력하시면 정확한 비교가 가능합니다.</li>
+                                <li>하단의 상품 상세 설명란의 사이즈표는 업체 기준 측정입니다.</li>
+                            </ul>
+                        </div>
+                        <div class="size_cont size_list">
+                        	<strong>사이즈 추천</strong>
+                            <p>구매고객 추천 내역으로 플레이어스토어에서는 이를 보증하지 않습니다. <br>참고용으로만 활용하시기 바랍니다.</p>
+                            <ul>
+                            	<li>
+                                	<p>[추천인] (남자 999cm | 999kg) / <strong>구매 옵션 : XXL Size</strong></p>
+                                    <span>적당해요</span>
+                                    <time>9999-99-99</time>
+                                </li>
+                                <li>
+                                	<p>[추천인] (남자 181cm | 71kg) / <strong>구매 옵션 : XL Size</strong></p>
+                                    <span>작아요</span>
+                                    <time>9999-99-99</time>
+                                </li>
+                                <li>
+                                	<p>[추천인] (남자 181cm | 71kg) / <strong>구매 옵션 : XL Size</strong></p>
+                                    <span>커요</span>
+                                    <time>9999-99-99</time>
+                                </li>
+                                <li>
+                                	<p>[추천인] (남자 181cm | 71kg) / <strong>구매 옵션 : XL Size</strong></p>
+                                    <span>적당해요</span>
+                                    <time>9999-99-99</time>
+                                </li>
+                                <li>
+                                	<p>[추천인] (남자 181cm | 71kg) / <strong>구매 옵션 : XL Size</strong></p>
+                                    <span>적당해요</span>
+                                    <time>9999-99-99</time>
+                                </li>
+                                <li>
+                                	<p>[추천인] (남자 181cm | 71kg) / <strong>구매 옵션 : XL Size</strong></p>
+                                    <span>적당해요</span>
+                                    <time>9999-99-99</time>
+                                </li>
+                                <li>
+                                	<p>[추천인] (남자 181cm | 71kg) / <strong>구매 옵션 : XL Size</strong></p>
+                                    <span>적당해요</span>
+                                    <time>9999-99-99</time>
+                                </li>
+                                <li>
+                                	<p>[추천인] (남자 181cm | 71kg) / <strong>구매 옵션 : XL Size</strong></p>
+                                    <span>적당해요</span>
+                                    <time>9999-99-99</time>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            	<div class="detail_clause today"><!-- 오늘 본 상품 -->
+					<div class="product_subtit">TODAY VIEW<small>오늘 본 상품</small></div>
+                    <div class="detail">
+                        <div class="today_view">
+                            <ul class="bxslider">
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=01" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=02" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=03" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=04" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=05" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=06" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=07" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=08" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=09" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=10" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=11" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=12" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=13" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=14" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=15" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=16" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=17" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=18" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=19" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=20" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=21" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=22" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=23" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=24" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=25" alt="상품명">9,999,999 won</a></li>
+                                <li><a href="#"><img src="http://placehold.it/94/ffffff?text=26" alt="상품명">9,999,999 won</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail_clause info"><!-- 제품 정보 -->
+                	<p class="product_subtit">PRODUCT INFO<small>제품정보</small></p>
+                    <div class="detail">
+                        <img src="http://placehold.it/960x480/333333?text=INFO1" alt="상품설명">
+                        <img src="http://placehold.it/960x480/666666?text=INFO2" alt="상품설명">
+                    </div>
+                </div>
+                <div class="detail_clause relate"><!-- 관련 상품 -->
+                	<div class="product_subtit">RELATED PRODUCT<small>관련상품</small></div>
+                    <div class="detail">
+                        <ul class="product_list type01">
+                            <li>
+                                <span class="best">BEST 1</span><!-- 베스트 상품 -->
+                                <span class="deli">당일배송</span><!-- 배송 옵션-->
+                                <div class="info">
+                                    <span class="tit">상품명상품명상품명상품명상품명상품명상품명상품명상품명</span>
+                                    <p class="ellipsis">상품부제상품부제상품부제상품부제상품부제상품부제상품부제상품부제</p>
+                                    <div class="point">
+                                        <img src="../../img/img/img_point_5.png" alt="평점 5점">
+                                        <!--
+                                            <img src="../../img/img/img_point_1.png" alt="평점 1점>
+                                            <img src="../../img/img/img_point_2.png" alt="평점 2점>
+                                            <img src="../../img/img/img_point_3.png" alt="평점 3점>
+                                            <img src="../../img/img/img_point_4.png" alt="평점 4점>
+                                        -->
+                                        <span class="point_cnt"><span class="hidden">평점 갯수</span>999</span><!-- 평점 갯수 -->
+                                        <strong class="discount"><span class="hidden">할인율</span>99</strong><!-- 할인율 -->
+                                    </div>
+                                    <em>9,999,999</em><!-- 원가 -->
+                                    <small>[쿠폰 <span>99,999원</span>]</small><!-- 쿠폰 -->
+                                    <span class="real_price coupon">9,999,999 won</span><!-- 실 판매가 -->
+                                    <div class="size"><!-- 재고 현황 -->
+                                        <button type="button">재고 보유 중인 사이즈 목록</button>
+                                        <ul>
+                                            <li>200</li>
+                                            <li>210</li>
+                                            <li>999</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <img src="http://placehold.it/168/cccccc?text=IMG" alt="">
+                                    <span class="hidden">상품상세보기</span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="info">
+                                    <span class="tit">상품명상품명상품명상품명상품명상품명상품명상품명상품명</span>
+                                    <p class="ellipsis">상품부제상품부제상품부제상품부제상품부제상품부제상품부제상품부제</p>
+                                    <div class="point">
+                                        <img src="../../img/img/img_point_5.png" alt="평점 5점">
+                                        <!--
+                                            <img src="../../img/img/img_point_1.png" alt="평점 1점>
+                                            <img src="../../img/img/img_point_2.png" alt="평점 2점>
+                                            <img src="../../img/img/img_point_3.png" alt="평점 3점>
+                                            <img src="../../img/img/img_point_4.png" alt="평점 4점>
+                                        -->
+                                        <span class="point_cnt"><span class="hidden">평점 갯수</span>999</span><!-- 평점 갯수 -->
+                                        <strong class="discount"><span class="hidden">할인율</span>99</strong><!-- 할인율 -->
+                                    </div>
+                                    <em><span class="hidden">원가</span>9,999,999</em><!-- 원가 -->
+                                    <span class="real_price"><span class="hidden">실 판매가</span>9,999,999 won</span><!-- 실 판매가 -->
+                                    <div class="size"><!-- 재고 현황 -->
+                                        <button type="button">재고 보유 중인 사이즈 목록</button>
+                                        <ul>
+                                            <li>200</li>
+                                            <li>210</li>
+                                            <li>999</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <img src="http://placehold.it/168/cccccc?text=IMG" alt="">
+                                    <span class="hidden">상품상세보기</span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="info">
+                                    <span class="tit">상품명상품명상품명상품명상품명상품명상품명상품명상품명</span>
+                                    <p class="ellipsis">상품부제상품부제상품부제상품부제상품부제상품부제상품부제상품부제</p>
+                                    <div class="point">
+                                        <img src="../../img/img/img_point_5.png" alt="평점 5점">
+                                        <!--
+                                            <img src="../../img/img/img_point_1.png" alt="평점 1점>
+                                            <img src="../../img/img/img_point_2.png" alt="평점 2점>
+                                            <img src="../../img/img/img_point_3.png" alt="평점 3점>
+                                            <img src="../../img/img/img_point_4.png" alt="평점 4점>
+                                        -->
+                                        <span class="point_cnt"><span class="hidden">평점 갯수</span>999</span><!-- 평점 갯수 -->
+                                        <strong class="discount"><span class="hidden">할인율</span>99</strong><!-- 할인율 -->
+                                    </div>
+                                    <em><span class="hidden">원가</span>9,999,999</em><!-- 원가 -->
+                                    <span class="real_price"><span class="hidden">실 판매가</span>9,999,999 won</span><!-- 실 판매가 -->
+                                    <div class="size"><!-- 재고 현황 -->
+                                        <button type="button">재고 보유 중인 사이즈 목록</button>
+                                        <ul>
+                                            <li>200</li>
+                                            <li>210</li>
+                                            <li>999</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <img src="http://placehold.it/168/cccccc?text=IMG" alt="">
+                                    <span class="hidden">상품상세보기</span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="info">
+                                    <span class="tit">상품명상품명상품명상품명상품명상품명상품명상품명상품명</span>
+                                    <p class="ellipsis">상품부제상품부제상품부제상품부제상품부제상품부제상품부제상품부제</p>
+                                    <div class="point">
+                                        <img src="../../img/img/img_point_5.png" alt="평점 5점">
+                                        <!--
+                                            <img src="../../img/img/img_point_1.png" alt="평점 1점>
+                                            <img src="../../img/img/img_point_2.png" alt="평점 2점>
+                                            <img src="../../img/img/img_point_3.png" alt="평점 3점>
+                                            <img src="../../img/img/img_point_4.png" alt="평점 4점>
+                                        -->
+                                        <span class="point_cnt"><span class="hidden">평점 갯수</span>999</span><!-- 평점 갯수 -->
+                                        <strong class="discount"><span class="hidden">할인율</span>99</strong><!-- 할인율 -->
+                                    </div>
+                                    <em><span class="hidden">원가</span>9,999,999</em><!-- 원가 -->
+                                    <span class="real_price"><span class="hidden">실 판매가</span>9,999,999 won</span><!-- 실 판매가 -->
+                                    <div class="size"><!-- 재고 현황 -->
+                                        <button type="button">재고 보유 중인 사이즈 목록</button>
+                                        <ul>
+                                            <li>200</li>
+                                            <li>210</li>
+                                            <li>999</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <img src="http://placehold.it/168/cccccc?text=IMG" alt="">
+                                    <span class="hidden">상품상세보기</span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="info">
+                                    <span class="tit">상품명상품명상품명상품명상품명상품명상품명상품명상품명</span>
+                                    <p class="ellipsis">상품부제상품부제상품부제상품부제상품부제상품부제상품부제상품부제</p>
+                                    <div class="point">
+                                        <img src="../../img/img/img_point_5.png" alt="평점 5점">
+                                        <!--
+                                            <img src="../../img/img/img_point_1.png" alt="평점 1점>
+                                            <img src="../../img/img/img_point_2.png" alt="평점 2점>
+                                            <img src="../../img/img/img_point_3.png" alt="평점 3점>
+                                            <img src="../../img/img/img_point_4.png" alt="평점 4점>
+                                        -->
+                                        <span class="point_cnt"><span class="hidden">평점 갯수</span>999</span><!-- 평점 갯수 -->
+                                        <strong class="discount"><span class="hidden">할인율</span>99</strong><!-- 할인율 -->
+                                    </div>
+                                    <em><span class="hidden">원가</span>9,999,999</em><!-- 원가 -->
+                                    <span class="real_price"><span class="hidden">실 판매가</span>9,999,999 won</span><!-- 실 판매가 -->
+                                    <div class="size"><!-- 재고 현황 -->
+                                        <button type="button">재고 보유 중인 사이즈 목록</button>
+                                        <ul>
+                                            <li>200</li>
+                                            <li>210</li>
+                                            <li>999</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <img src="http://placehold.it/168/cccccc?text=IMG" alt="">
+                                    <span class="hidden">상품상세보기</span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="info">
+                                    <span class="tit">상품명상품명상품명상품명상품명상품명상품명상품명상품명</span>
+                                    <p class="ellipsis">상품부제상품부제상품부제상품부제상품부제상품부제상품부제상품부제</p>
+                                    <div class="point">
+                                        <img src="../../img/img/img_point_5.png" alt="평점 5점">
+                                        <!--
+                                            <img src="../../img/img/img_point_1.png" alt="평점 1점>
+                                            <img src="../../img/img/img_point_2.png" alt="평점 2점>
+                                            <img src="../../img/img/img_point_3.png" alt="평점 3점>
+                                            <img src="../../img/img/img_point_4.png" alt="평점 4점>
+                                        -->
+                                        <span class="point_cnt"><span class="hidden">평점 갯수</span>999</span><!-- 평점 갯수 -->
+                                        <strong class="discount"><span class="hidden">할인율</span>99</strong><!-- 할인율 -->
+                                    </div>
+                                    <em><span class="hidden">원가</span>9,999,999</em><!-- 원가 -->
+                                    <span class="real_price"><span class="hidden">실 판매가</span>9,999,999 won</span><!-- 실 판매가 -->
+                                    <div class="size"><!-- 재고 현황 -->
+                                        <button type="button">재고 보유 중인 사이즈 목록</button>
+                                        <ul>
+                                            <li>200</li>
+                                            <li>210</li>
+                                            <li>999</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <img src="http://placehold.it/168/cccccc?text=IMG" alt="">
+                                    <span class="hidden">상품상세보기</span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="info">
+                                    <span class="tit">상품명상품명상품명상품명상품명상품명상품명상품명상품명</span>
+                                    <p class="ellipsis">상품부제상품부제상품부제상품부제상품부제상품부제상품부제상품부제</p>
+                                    <div class="point">
+                                        <img src="../../img/img/img_point_5.png" alt="평점 5점">
+                                        <!--
+                                            <img src="../../img/img/img_point_1.png" alt="평점 1점>
+                                            <img src="../../img/img/img_point_2.png" alt="평점 2점>
+                                            <img src="../../img/img/img_point_3.png" alt="평점 3점>
+                                            <img src="../../img/img/img_point_4.png" alt="평점 4점>
+                                        -->
+                                        <span class="point_cnt"><span class="hidden">평점 갯수</span>999</span><!-- 평점 갯수 -->
+                                        <strong class="discount"><span class="hidden">할인율</span>99</strong><!-- 할인율 -->
+                                    </div>
+                                    <em><span class="hidden">원가</span>9,999,999</em><!-- 원가 -->
+                                    <span class="real_price"><span class="hidden">실 판매가</span>9,999,999 won</span><!-- 실 판매가 -->
+                                    <div class="size"><!-- 재고 현황 -->
+                                        <button type="button">재고 보유 중인 사이즈 목록</button>
+                                        <ul>
+                                            <li>200</li>
+                                            <li>210</li>
+                                            <li>999</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <img src="http://placehold.it/168/cccccc?text=IMG" alt="">
+                                    <span class="hidden">상품상세보기</span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="info">
+                                    <span class="tit">상품명상품명상품명상품명상품명상품명상품명상품명상품명</span>
+                                    <p class="ellipsis">상품부제상품부제상품부제상품부제상품부제상품부제상품부제상품부제</p>
+                                    <div class="point">
+                                        <img src="../../img/img/img_point_5.png" alt="평점 5점">
+                                        <!--
+                                            <img src="../../img/img/img_point_1.png" alt="평점 1점>
+                                            <img src="../../img/img/img_point_2.png" alt="평점 2점>
+                                            <img src="../../img/img/img_point_3.png" alt="평점 3점>
+                                            <img src="../../img/img/img_point_4.png" alt="평점 4점>
+                                        -->
+                                        <span class="point_cnt"><span class="hidden">평점 갯수</span>999</span><!-- 평점 갯수 -->
+                                        <strong class="discount"><span class="hidden">할인율</span>99</strong><!-- 할인율 -->
+                                    </div>
+                                    <em><span class="hidden">원가</span>9,999,999</em><!-- 원가 -->
+                                    <span class="real_price"><span class="hidden">실 판매가</span>9,999,999 won</span><!-- 실 판매가 -->
+                                    <div class="size"><!-- 재고 현황 -->
+                                        <button type="button">재고 보유 중인 사이즈 목록</button>
+                                        <ul>
+                                            <li>200</li>
+                                            <li>210</li>
+                                            <li>999</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <img src="http://placehold.it/168/cccccc?text=IMG" alt="">
+                                    <span class="hidden">상품상세보기</span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="info">
+                                    <span class="tit">상품명상품명상품명상품명상품명상품명상품명상품명상품명</span>
+                                    <p class="ellipsis">상품부제상품부제상품부제상품부제상품부제상품부제상품부제상품부제</p>
+                                    <div class="point">
+                                        <img src="../../img/img/img_point_5.png" alt="평점 5점">
+                                        <!--
+                                            <img src="../../img/img/img_point_1.png" alt="평점 1점>
+                                            <img src="../../img/img/img_point_2.png" alt="평점 2점>
+                                            <img src="../../img/img/img_point_3.png" alt="평점 3점>
+                                            <img src="../../img/img/img_point_4.png" alt="평점 4점>
+                                        -->
+                                        <span class="point_cnt"><span class="hidden">평점 갯수</span>999</span><!-- 평점 갯수 -->
+                                        <strong class="discount"><span class="hidden">할인율</span>99</strong><!-- 할인율 -->
+                                    </div>
+                                    <em><span class="hidden">원가</span>9,999,999</em><!-- 원가 -->
+                                    <span class="real_price"><span class="hidden">실 판매가</span>9,999,999 won</span><!-- 실 판매가 -->
+                                    <div class="size"><!-- 재고 현황 -->
+                                        <button type="button">재고 보유 중인 사이즈 목록</button>
+                                        <ul>
+                                            <li>200</li>
+                                            <li>210</li>
+                                            <li>999</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#">
+                                    <img src="http://placehold.it/168/cccccc?text=IMG" alt="">
+                                    <span class="hidden">상품상세보기</span>
+                                </a>
+                            </li>
+                        </ul>
+					</div>
+                </div>
+                <div class="detail_clause photo"><!-- 포토상품평 -->
+                	<div class="product_subtit">PHOTO REVIEW<small>포토상품평</small></div>
+                    <dl	class="photo_review">
+                    	<dt>
+                        	<a href="#none">
+                                <img src="http://placehold.it/109/ffffff?text=IMG" alt="">
+                                <div>
+                                    <p class="ellipsis">
+                                        <img src="../../img/img/img_point_5.png" alt="평점 5점">긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목
+									</p>
+                                    <small class="ellipsis">긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션</small>
+                                </div>
+                                <div>
+                                	<strong>홍길*</strong>
+                                    <time>9999-99-99</time>
+                                </div>
+                            </a>
+                        </dt>
+                        <dd>
+                        	<div><!-- 에디터로 들어가는 영역(예제) -->
+                            	<img src="http://placehold.it/1107x200/ffffff?text=IMG" alt="">
+                                <p>긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용</p>
+                                <ul>
+                                	<li>리스트</li>
+                                    <li>리스트</li>
+                                </ul>
+                            </div>
+                        </dd>
+                        <dt>
+                        	<a href="#none">
+                                <img src="http://placehold.it/109/ffffff?text=IMG" alt="">
+                                <div>
+                                    <p class="ellipsis">
+                                        <img src="../../img/img/img_point_5.png" alt="평점 5점">긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목
+									</p>
+                                    <small class="ellipsis">긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션긴옵션</small>
+                                </div>
+                                <div>
+                                	<strong>홍길*</strong>
+                                    <time>9999-99-99</time>
+                                </div>
+                            </a>
+                        </dt>
+                        <dd>
+                        	<div><!-- 에디터로 들어가는 영역(예제) -->
+                            	<img src="http://placehold.it/1107x200/ffffff?text=IMG" alt="">
+                                <p>긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용</p>
+                                <ul>
+                                	<li>리스트</li>
+                                    <li>리스트</li>
+                                </ul>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="detail_clause review"><!-- REVIEW -->
+                	<div class="product_subtit">REVIEW<small>상품평</small></div>
+                    <table class="tb tb_type02 cont">
+                        <caption>상품평 게시물 리스트</caption>
+                        <colgroup>
+                            <col style="width:7%" />
+                            <col style="width:" />
+                            <col style="width:8%" />
+                            <col style="width:8%" />
+                            <col style="width:8%" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">번호</th>
+                                <th scope="col">제목</th>
+                                <th scope="col">만족도</th>
+                                <th scope="col">작성자</th>
+                                <th scope="col">작성일</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            	<td>999999</td>
+                                <td class="tit">
+                                	<a href="#none">긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목</a>
+                                	<div class="tit_cont"><!-- 에디터 입력 영역(예제) -->
+                                    	<p>긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용</p>
+                                        <ul>
+                                        	<li>리스트</li>
+                                            <li>리스트</li>
+                                        </ul>
+                                        <a href="#">링크</a>
+                                    </div>
+                                </td>
+                                <td>
+                                	<img src="../../img/img/img_point_1.png" alt="1점">
+                                    <!-- 
+                                        <img src="../../img/img/img_point_2.png" alt="2점">
+                                        <img src="../../img/img/img_point_3.png" alt="3점">
+                                        <img src="../../img/img/img_point_4.png" alt="4점">
+                                        <img src="../../img/img/img_point_5.png" alt="5점">
+                                    -->
+                                </td>
+                                <td>홍길*</td>
+                                <td class="date">2016.10.30</td>
+                            </tr>
+                            <tr>
+                            	<td>999999</td>
+                                <td class="tit">
+                                	<a href="#none">제목</a>
+                                	<div class="tit_cont"><!-- 에디터 입력 영역(예제) -->
+                                    	<p>긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용</p>
+                                        <ul>
+                                        	<li>리스트</li>
+                                            <li>리스트</li>
+                                        </ul>
+                                        <a href="#">링크</a>
+                                    </div>
+                                </td>
+                                <td><img src="../../img/img/img_point_1.png" alt="1점"></td>
+                                <td>홍길*</td>
+                                <td class="date">2016.10.30</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="paging">
+                        <div class="page">
+                            <a href="#none" class="start">첫 페이지</a>
+                            <a href="#none" class="prev">이전 페이지</a>
+                            <ul>
+                                <li><a href="#none">1</a></li>
+                                <li><a href="#none">2</a></li>
+                                <li><a href="#none">3</a></li>
+                                <li><a href="#none">4</a></li>
+                                <li><a href="#none">5</a></li>
+                                <li><a href="#none">6</a></li>
+                                <li><a href="#none">7</a></li>
+                                <li><a href="#none">8</a></li>
+                                <li><a href="#none">9</a></li>
+                                <li><a href="#none">10</a></li>
+                            </ul>
+                            <a href="#none" class="next">다음 페이지</a>
+                            <a href="#none" class="end">끝 페이지</a>
+                        </div>
+                        <div class="btn_wrap">
+                        	<a class="red" href="#none" title="새창열림">상품평쓰기</a>
+                        </div>
+                    </div><!-- // paging -->
+                </div>
+                <div class="detail_clause qna"><!-- QNA -->
+                	<div class="product_subtit">
+                    	Q&amp;A
+                        <small>상품문의</small>
+                        <div class="btn_list">
+                        	<a class="modal_btn" data-n="m_popup_deli" href="#popup_tab01">배송관련정보</a>
+                            <a class="modal_btn" data-n="m_popup_deli" href="#popup_tab02">구매전확인</a>
+                            <a class="modal_btn" data-n="m_popup_deli" href="#popup_tab03">교환·환불/반품</a>
+                        </div>
+                            
+                        <!-- 모달 -->
+                        <div class="layer m_popup_deli">
+                            <div class="layer_box type1">
+                                <!-- 모달팝업 내용삽입 영역 -->
+                                <div class="popup_wrap popup_tp01 deli">
+                                    <div class="popup_tit">
+                                        <p>배송/구매/교환</p>
+                                    </div>
+                                    <div class="popup_cont">
+                                        <ul class="tab_list narrow type03">
+                                        <!-- on 클래스 부여, 해당 탭 내용 보임 -->
+                                            <li><a href="#popup_tab01">배송관련 정보</a></li>
+                                            <li><a href="#popup_tab02">구매전 확인 사항</a></li>
+                                            <li><a href="#popup_tab03">교환/환불/반품</a></li>
+                                        </ul>
+                                
+                                        <div class="tab_cont" id="popup_tab01">
+                                            <em class="hidden">배송관련 정보 내용입니다.</em>
+                                
+                                            <p class="tit">배송분류는 어떻게 되나요?</p>
+                                            <span>구입하신 상품이 마음에 들지 않을 경우 교환/환불 신청을 하실 수 있습니다.</span>
+                                            <dl>
+                                                <dt>국내배송</dt>
+                                                <dd>전국 어느곳에서나 택배를 이용해 결제확인 후 2~4일(일요일/공휴일 제외)이며, 빠르고 안전하게 상품을 받으실 수 있습니다.</dd>
+                                                <dt>해외배송</dt>
+                                                <dd>국내에서 구하기 힘들고 해외에서만 판매되고 있는 상품들을 엄선해 비싼 항공운송료와 세관통관비를 없애 고객님의 부담을 줄인 무료배송으로 판매되는 파격적인 서비스입니다. 배송기간은 결제확인 후 약 7일~15일 소요됩니다.</dd>
+                                                <dt>주문제작</dt>
+                                                <dd>배송주문후 상품이 제작되어 발송되므로 배송기간이 상품에 따라 다르게 소요됩니다.</dd>
+                                            </dl>
+                                
+                                            <p class="tit">배송기간은 얼마나 걸리나요?</p>
+                                            <span>구입하신 상품이 마음에 들지 않을 경우 교환/환불 신청을 하실 수 있습니다.</span>
+                                            <dl>
+                                                <dt>국내배송</dt>
+                                                <dd>결제확인 후 2~4일 (주말/공휴일 제외)의 기간이 소요됩니다. 단, 제주도와 산간 도서지역은 1~2일이 추가 소요될 수 있습니다. 배송물량이 증가하는 시기(설,추석 등)나 택배업체의 사정에 의해 최장 7일까지 소요 될 수 있습니다.</dd>
+                                                <dt>해외배송</dt>
+                                                <dd>항공운송기간과 세관통관 기간이 포함되어 약 7일~15일의 배송시간이 소요됩니다.</dd>
+                                                <dt>주문제작 및 특수 상품의 경우 </dt>
+                                                <dd>배송기간이 상품마다 다르게 적용될 수 있습니다.</dd>
+                                            </dl>
+                                
+                                            <p class="tit">배송비는 얼마인가요?</p>
+                                            <span>배송비는 판매업체별 편도 2500원 입니다. 단, 도서산간 지역은 2000원의 추가요금이 발생되며, 주문서 작성 시 <br />추가배송비 2,000원이 포함됩니다.</span>
+                                            <dl>
+                                                <dt>당일배송</dt>
+                                                <dd>영업일 오후 4시 30분 이전 결제완료 주문건에 대해 당일발송</dd>
+                                                <dt>업체배송</dt>
+                                                <dd>각 협력사를 통해 개별 발송 (택배사 다름)</dd>
+                                                <dt>평균 발송일</dt>
+                                                <dd>판매업체 별 결제가 완료되는 시점으로부터 상품이 해당 택배사로 전달되는 시점까지의 평균 소요시간</dd>
+                                            </dl>
+                                        </div>
+                                
+                                        <div class="tab_cont" id="popup_tab02">
+                                            <em class="hidden">구매전 확인 사항 내용입니다.</em>
+                                            <strong>구매전에 꼭 확인하세요!</strong>
+                                            <p class="sub">상품구매시 주의사항</p>
+                                            <span>상품 촬영 당시 스튜디오의 빛의 세기 및 카메라 플래쉬, 모니터색상 설정 등으로 인해, 실제 상품은 화면에 보여지는 이미지와 다소 차이가 있을 수 있습니다.<br />상품의 실측 사이즈는 측정하는 사람, 측정위치 등에 따라 서로 차이가 발생할 수 있으며, 동일 브랜드의 같은 사이즈 상품이라고 하더라도 여러 단계의 생산공정을 거치면서 상품마다 사이즈 오차가 발생하기 때문에 안내된 실측사이즈와 수령하신 상품의 사이즈 오차는 자연스러운 현상으로 상품이상이 아닙니다.</span>
+                                
+                                            <p class="sub">A/S 안내</p>
+                                            <span>플레이어에서 판매되는 상품 중 해외 구매대행 상품 및 직수입 상품은 제조사 및 판매처와 사후 서비스에 관한 연계가 되어 있지 않아 A/S 처리가 불가능 합니다.</span>
+                                        </div>
+                                
+                                        <div class="tab_cont" id="popup_tab03">
+                                            <em class="hidden">교환, 환불, 반품 관련 내용입니다.</em>
+                                            <p class="tit">이런경우 교환/환불이 <span class="blue">가능</span>해요!</p>
+                                            <span>구입하신 상품이 마음에 들지 않을 경우 교환/환불 신청을 하실 수 있습니다.</span>
+                                            <ul>
+                                                <li>교환이나 환불을 원하실 경우, 상품을 수령하신 날로부터 7일 이내에 교환/환불 신청을 하셔야 합니다.<br />(단, 상품에 제조상의 하자가 있는 경우에는 30일 이내에 반품 신청을 하실 수 있습니다.)</li>
+                                                <li>고객의 취향이나, 주관적인 불만사항(디자인, 색상차이, 사이즈, 실측정보, 소재, 마감처리 등)으로 교환 및 환불을 원하실 경우 왕복 택배비는 소비자 부담입니다.</li>
+                                                <li>교환/환불 신청 후 14일 이내 상품이 반송지로 도착하지 않을 경우 접수는 임의적으로 취소됩니다.<br />(단, 회수 반품 배송지연의 경우는 제외)</li>
+                                            </ul>
+                                
+                                            <p class="tit">이런경우 교환/환불이 <span class="red">불가능</span>해요!</p>
+                                            <span>아래와 같은 경우에는 교환/환불이 불가합니다.</span>
+                                            <ul>
+                                                <li>상품을 수령하신 후 7일을 초과한 경우</li>
+                                                <li>한번이라도 상품을 사용하신 경우</li>
+                                                <li>상품에 부착된 택을 훼손/분실 하거나 브랜드 박스에 낙서나 테이핑, 운송장을 부착한 경우</li>
+                                                <li>세탁, 수선 등의 처리가 진행된 경우</li>
+                                                <li>상품과 함께 제공된 사은품이나 그 외 서비스 등을 사용하셨거나 훼손 (파손, 분실, 반품 누락 등)하신 경우<br />(단, 일부 사은품의 경우 해당 사은품 비용  부담 후 반품처리 가능)</li>
+                                                <li>주문제작, 속옷 등과 같이 재화의 특성상 교환/환불이 불가능한 경우</li>
+                                            </ul>
+                                            <span>임의대로 반품을 하셔서 상품에 훼손이 있는 경우나 상품이 배송중 분실된 경우에는 플레이어에서 배상책임을 지지 않습니다.<br />그러므로 반품을 원하실 경우에는 반드시 1:1친절상담 또는 고객센터(1566-1677)로 반품신청을 해주시기 바랍니다.</span>
+                                
+                                            <p class="tit">반품시 포장법에 대해 알려주세요!</p>
+                                            <span>반품(교환/환불)시 브랜드박스 포장의 예시</span>
+                                            <ul>
+                                                <li>정품 브랜드 박스는 상품의 일부분이며 대체가 불가능합니다.</li>
+                                                <li>정품 브랜드 박스가 없거나, 훼손이 된 경우에는 반품(교환/환불)이 불가합니다.</li>
+                                            </ul>
+                                
+                                            <ul class="return_ex">
+                                                <li>
+                                                    <p><span class="blue">올바른</span> 반품 포장의 예</p>
+                                                    <div class="right">
+                                                        <span>정품 브랜드 박스의 훼손이 없도록 <br />택배 박스 및 타박스로 반드시 <br />이중포장 합니다.</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <p><span class="red">잘못된</span> 반품 포장의 예</p>
+                                                    <div class="wrong">
+                                                        <span>정품 브랜드 박스에 직접적인 송장부착, <br />낙서를 한 경우나 테이핑을 할 경우에는 <br />반품(교환/환불)이 불가합니다.</span>
+                                                        <span>정품 브랜드 박스 훼손 및 분실 후 <br />상품만 반송 되어진 경우에는 <br />반품(교환/환불)이 불가합니다.</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                
+                                    </div> <!-- // popup_cont -->
+                                
+                                    <div class="popup_close">
+                                        <a href="#none" class="btn_close modal_btn">팝업창 닫기</a>
+                                    </div>
+                                </div> <!-- // popup -->
+                                <!-- //모달팝업 내용삽입 영역 -->
+                            </div>
+                        </div>
+                        <!-- //모달 -->
+
+                    </div>
+                    <table class="tb tb_type02 cont qna">
+                        <caption>상품문의 게시물 리스트</caption>
+                        <colgroup>
+                            <col style="width:7%" />
+                            <col style="width:8%" />
+                            <col style="width:" />
+                            <col style="width:8%" />
+                            <col style="width:8%" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">번호</th>
+                                <th scope="col">답변유무</th>
+                                <th scope="col">제목</th>
+                                <th scope="col">작성자</th>
+                                <th scope="col">작성일</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            	<td>999999</td>
+                                <td><span>답변대기</span></td>
+                                <td class="tit">
+                                	<a href="#none">긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목</a>
+                                    <div class="tit_cont"><!-- 에디터 입력 영역(예제) -->
+                                    	<p>긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용</p>
+                                        <ul>
+                                        	<li>리스트</li>
+                                            <li>리스트</li>
+                                        </ul>
+                                        <a href="#">링크</a>
+                                    </div>
+                                </td>
+                                <td>홍길*</td>
+                                <td class="date">2016.10.30</td>
+                            </tr>
+							<tr>
+                            	<td>999999</td>
+                                <td><span class="answer">답변완료</span></td>
+                                <td class="tit">
+                                	<a href="#none">긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목긴제목</a>
+                                	<div class="tit_cont"><!-- 에디터 입력 영역(예제) -->
+                                    	<p>긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용</p>
+                                        <ul>
+                                        	<li>리스트</li>
+                                            <li>리스트</li>
+                                        </ul>
+                                        <a href="#">링크</a>
+                                    </div>
+                                    <div class="tit_answer"><!-- 에디터 입력 영역(예제) -->
+                                    	<p>긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용</p>
+                                        <ul>
+                                        	<li>리스트</li>
+                                            <li>리스트</li>
+                                        </ul>
+                                        <a href="#">링크</a>
+                                    </div>
+                                </td>
+                                <td>홍길*</td>
+                                <td class="date">2016.10.30</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="paging">
+                        <div class="page">
+                            <a href="#none" class="start">첫 페이지</a>
+                            <a href="#none" class="prev">이전 페이지</a>
+                            <ul>
+                                <li><a href="#none">1</a></li>
+                                <li><a href="#none">2</a></li>
+                                <li><a href="#none">3</a></li>
+                                <li><a href="#none">4</a></li>
+                                <li><a href="#none">5</a></li>
+                                <li><a href="#none">6</a></li>
+                                <li><a href="#none">7</a></li>
+                                <li><a href="#none">8</a></li>
+                                <li><a href="#none">9</a></li>
+                                <li><a href="#none">10</a></li>
+                            </ul>
+                            <a href="#none" class="next">다음 페이지</a>
+                            <a href="#none" class="end">끝 페이지</a>
+                        </div>
+                        <div class="btn_wrap">
+                            <a href="#none" title="새창열림">상품문의</a>
+                        	<a class="red" href="#none" title="새창열림">1:1 친절상담</a> <!-- 클래스명 변경 20161214 -->
+                        </div>
+                    </div><!-- // paging -->
+                </div>
+                <div class="detail_clause cominfo"><!-- 업체정보 -->
+                	<div class="product_subtit">업체정보</div>
+                    <table class="tb tb_type03">
+                        <caption>업체정보 표</caption>
+                        <colgroup>
+                            <col style="width:15%" />
+                            <col style="width:" />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th scope="row">업체명</th>
+                                <td>긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">주소</th>
+                                <td>내용</td>
+                            </tr>
+                            <tr>
+                            	<td colspan="2">
+                                	<ul class="cmt">
+                                    	<li>상품 옵션에 따라 판매자(발송지)가 다를 수 있습니다. 선택하신 상품에 대한 배송 및 판매자 정보를 장바구니에서 꼭 확인해 주세요</li>
+                                        <li>판매자 정보란의 주소는 반송처가 아니기때문에 반품접수가 되지 않습니다. 반품접수는 반드시 고객센터(1566-1677)로 접수하신 후 안내에 따라 진행해 주세요</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="detail_clause proinfo"><!-- 상품기본정보 -->
+                	<div class="product_subtit">상품기본정보</div>
+                    <table class="tb tb_type03">
+                        <caption>상품기본정보 표</caption>
+                        <colgroup>
+                            <col style="width:15%" />
+                            <col style="width:" />
+                            <col style="width:15%" />
+                            <col style="width:" />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th scope="row">제품소재</th>
+                                <td>긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용긴내용</td>
+                                <th scope="row">색상</th>
+                                <td>내용</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">치수</th>
+                                <td>내용</td>
+                                <th scope="row">제조자</th>
+                                <td>내용</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">제조국</th>
+                                <td>내용</td>
+                                <th scope="row">세탁방법 및 주의사항</th>
+                                <td>내용</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">제조연월</th>
+                                <td>내용</td>
+                                <th scope="row">품질보증기준</th>
+                                <td>내용</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">AS책임자</th>
+                                <td colspan="3">내용</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="info_wrap">
+        <div class="info_box">
+            <div class="info_cont notice">
+                <h2><span>공지사항</span></h2>
+                <ul>
+                    <li><a class="ellipsis" href="#">긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장</a></li>
+                    <li><a class="ellipsis" href="#">긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장긴문장</a></li>
+                </ul>
+                <a href="#">더보기</a>
+            </div>
+            <div class="info_cont guide">
+                <h2><span>쇼핑 가이드</span></h2>
+                <ul>
+                    <li><a href="#">고객문의</a></li>
+                    <li><a href="#">상품문의</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+            </div>
+            <div class="info_cont customer">
+                <h2><span>고객센터</span></h2>
+                <ul>
+                    <li><a href="#">전화문의 전 클릭</a></li>
+                    <li><a href="#">1:1 상담 바로가기</a></li>
+                </ul>
+                <dl>
+                    <dt class="hidden">대표전화</dt>
+                    <dd>1670-4935</dd>
+                    <dd>전화주문 : 09:00 ~ 20:00</dd>
+                    <dd>점심시간 : 12:00 ~ 13:00</dd>
+                    <dt class="hidden">상담원연결</dt>
+                    <dd>1566-1677</dd>
+                    <dd>고객센터 : 09:00 ~ 18:00</dd>
+                </dl>
+                <p>토, 일, 공휴일에는 휴무이며, 고객문의 게시판을 이용해주세요.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer_wrap">
+        <footer>
+        	<div class="footer_menu">
+            	<ul>
+                	<li><a href="#">회사소개</a></li>
+                    <li><a href="#">입점/휴문의</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보취급방침</a></li>
+                    <li><a href="#">사업자정보확인</a></li>
+                    <li><a href="#">오시는길</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+                <a href="#">TOP</a>
+            </div>
+            <div class="player_info">
+            	<img src="../../img/img/img_footerlogo.png" alt="">
+            	<p>
+                	잇츠유어스(주)   │   대표이사 : 이영준   │   사업자등록번호 : 206-81-87924   │   특별통관대상지정업체 : NO. 20070192   │   통신판매신고번호 : 제 강남 - 14219호<br>
+					서울특별시 강남구 신사동 609번지 이소니프라자 6층   │   고객센터 : 1566-1677   │   팩스 : 02-547-2591
+                    <span class="copyright">Copyright ©2015 FENDA. ALL RIGHTS RESERVED.</span>
+                </p>
+            </div>
+            <div class="award">
+                <ul class=" bxslider">
+                    <li><img src="http://placehold.it/100x100/cccccc?text=01" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/999999?text=02" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/cccccc?text=03" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/999999?text=04" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/cccccc?text=05" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/999999?text=06" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/cccccc?text=07" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/999999?text=08" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/cccccc?text=09" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/999999?text=10" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/cccccc?text=11" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/999999?text=12" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/cccccc?text=13" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/999999?text=14" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/cccccc?text=15" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/999999?text=16" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/cccccc?text=17" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/999999?text=18" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/cccccc?text=19" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/999999?text=20" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/cccccc?text=21" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/999999?text=22" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/cccccc?text=23" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/999999?text=24" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/cccccc?text=25" alt=""></li>
+                    <li><img src="http://placehold.it/100x100/999999?text=26" alt=""></li>
+                </ul>
+            </div>
+            <p class="term">
+                당 사이트의 모든 저작물의 저작권은 플레이어에 있으며, 무단복제나 저작권법(제97조 5항)에 의해 금지되며, 이를 위반시에는 법적인 처벌을 받을 수 있습니다.<br>
+                잇츠유어스(주)는 관세법등 관련규정을 준수하고 불법물품을 취급하지 아니하며, 분할배송에 의한 가격허위신고 (15만원이하로 임의조정) 등 구매자의 불법사항 요청에는 일체 협조하지 않습니다.
+            </p>
+        </footer>
+    </div>
+</div>
+</body>
+</html>
